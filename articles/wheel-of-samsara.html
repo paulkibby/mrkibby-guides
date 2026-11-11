@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Простое и подробное объяснение буддийского Колеса сансары: три яда, карма, шесть миров, двенадцать звеньев, Яма и освобождение.">
+  <title>Колесо сансары: что это такое и как его читать — от Мистера Кибби</title>
+  <link rel="canonical" href="https://paulkibby.github.io/shift-guide/articles/wheel-of-samsara.html">
+  <meta property="og:title" content="Колесо сансары: что это такое и как его читать">
+  <meta property="og:description" content="Подробно разбираем рисунок Колеса сансары: от трёх животных в центре до двенадцати звеньев по краю.">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      --bg: #090d14;
+      --surface: #101722;
+      --surface-2: #151f2c;
+      --surface-3: #1b2938;
+      --text: #edf3fb;
+      --muted: #a2afbf;
+      --subtle: #718096;
+      --line: rgba(174, 194, 218, .14);
+      --accent: #9de7c2;
+      --accent-2: #72c9a0;
+      --blue: #91baff;
+      --amber: #ffd28a;
+      --shadow: 0 22px 70px rgba(0,0,0,.28);
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 18% -8%, rgba(80, 143, 119, .16), transparent 34rem),
+        radial-gradient(ellipse at 95% 12%, rgba(74, 116, 180, .13), transparent 32rem),
+        var(--bg);
+      font: 16px/1.78 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: .005em;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(9, 13, 20, .82);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--text); font-weight: 750; letter-spacing: -.025em; }
+    .brand:hover { text-decoration: none; }
+    .brand-mark {
+      display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px;
+      color: #07120d; background: var(--accent); font-size: 17px; font-weight: 900;
+      box-shadow: 0 0 28px rgba(157,231,194,.2);
+    }
+    .top-label { color: var(--muted); font-size: 13px; }
+    .hero { padding: 76px 0 43px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px;
+      border: 1px solid rgba(157,231,194,.22); border-radius: 999px;
+      background: rgba(157,231,194,.07); color: var(--accent); font-size: 11px;
+      font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    h1 { max-width: 930px; margin: 22px 0 18px; font-size: clamp(42px, 7vw, 76px); line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .lead { max-width: 790px; color: #bac6d5; font-size: clamp(17px, 2vw, 20px); line-height: 1.75; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border-radius: 10px; background: rgba(255,255,255,.045); border: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .answer-box {
+      margin-top: 34px; padding: 22px 24px; border: 1px solid rgba(157,231,194,.24);
+      border-radius: 19px; background: linear-gradient(120deg, rgba(157,231,194,.09), rgba(16,23,34,.92) 72%);
+    }
+    .answer-box strong { display: block; margin-bottom: 6px; color: var(--accent); font-size: 14px; }
+    .answer-box p { margin: 0; color: #d5e2ec; font-size: 15px; }
+    .layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: 46px; align-items: start; padding-bottom: 86px; }
+    .toc { position: sticky; top: 88px; padding: 16px 0; }
+    .toc-title { color: var(--subtle); text-transform: uppercase; letter-spacing: .13em; font-size: 10px; font-weight: 850; margin: 0 0 12px 12px; }
+    .toc a { display: block; padding: 8px 12px; color: var(--muted); border-left: 2px solid transparent; border-radius: 0 9px 9px 0; font-size: 12px; line-height: 1.45; }
+    .toc a:hover { color: var(--text); text-decoration: none; background: rgba(255,255,255,.04); border-left-color: var(--accent); }
+    article { min-width: 0; }
+    section { padding: 13px 0 31px; scroll-margin-top: 90px; }
+    .section-kicker { color: var(--accent); font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 850; }
+    h2 { margin: 8px 0 14px; font-size: clamp(27px, 4vw, 38px); line-height: 1.2; letter-spacing: -.045em; }
+    h3 { margin: 0 0 9px; font-size: 18px; line-height: 1.3; letter-spacing: -.025em; }
+    p { margin: 0 0 14px; color: #c1ccda; }
+    p:last-child { margin-bottom: 0; }
+    b, strong { color: var(--text); }
+    .muted { color: var(--muted); }
+    .simple-line { padding: 15px 18px; margin: 18px 0; border-left: 3px solid var(--accent); border-radius: 0 13px 13px 0; background: rgba(157,231,194,.055); color: #d9e7e0; }
+    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; margin: 19px 0; }
+    .info-card { padding: 19px; border-radius: 17px; background: var(--surface); border: 1px solid var(--line); }
+    .info-card p { margin: 0; font-size: 14px; }
+    .card-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 12px; border-radius: 12px; background: rgba(255,255,255,.045); border: 1px solid var(--line); font-size: 22px; }
+    .number { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; background: rgba(157,231,194,.1); color: var(--accent); font-weight: 850; font-size: 12px; margin-bottom: 11px; }
+    .note { display: flex; gap: 12px; margin: 18px 0; padding: 16px 17px; border: 1px solid rgba(145,186,255,.2); border-radius: 15px; background: rgba(85,133,199,.075); }
+    .note.warn { border-color: rgba(255,210,138,.22); background: rgba(255,210,138,.065); }
+    .note-icon { flex: 0 0 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; background: rgba(145,186,255,.12); color: var(--blue); font-weight: 900; }
+    .note.warn .note-icon { color: var(--amber); background: rgba(255,210,138,.12); }
+    .note p { margin: 0; font-size: 14px; }
+    .wheel-panel { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(210px, .85fr); align-items: center; gap: 24px; margin: 20px 0; padding: 18px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, #121c28, #0d141e); }
+    .wheel-svg { display: block; width: min(100%, 430px); margin: 0 auto; }
+    .wheel-key { display: grid; gap: 12px; }
+    .wheel-key-item { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
+    .wheel-key-item .key-number { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 9px; color: var(--accent); background: rgba(157,231,194,.1); font-size: 11px; font-weight: 900; }
+    .wheel-key-item strong { display: block; margin-bottom: 2px; font-size: 13px; }
+    .wheel-key-item span { display: block; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .realm-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 19px 0; }
+    .realm { min-height: 166px; padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .realm-top { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .realm-emoji { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: rgba(255,255,255,.045); font-size: 20px; }
+    .realm h3 { margin: 0; font-size: 16px; }
+    .realm p { margin: 0; font-size: 13px; }
+    .link-list { counter-reset: links; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 19px 0; }
+    .link-item { counter-increment: links; display: grid; grid-template-columns: 31px 1fr; gap: 10px; padding: 13px 14px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+    .link-item::before { content: counter(links); display: grid; place-items: center; width: 27px; height: 27px; border-radius: 8px; color: var(--accent); background: rgba(157,231,194,.1); font-size: 11px; font-weight: 900; }
+    .link-item strong { display: block; margin: 1px 0 3px; font-size: 13px; }
+    .link-item span { display: block; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 18px 0; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
+    .flow span { padding: 7px 9px; border-radius: 8px; color: #dce8f2; background: rgba(255,255,255,.045); font-size: 12px; }
+    .flow b { color: var(--accent); font-size: 15px; }
+    .steps { counter-reset: readstep; display: grid; gap: 10px; margin: 18px 0; }
+    .readstep { counter-increment: readstep; display: grid; grid-template-columns: 34px 1fr; gap: 11px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .readstep::before { content: counter(readstep, decimal-leading-zero); color: var(--accent); font-size: 11px; font-weight: 900; padding-top: 3px; }
+    .readstep p { margin: 0; font-size: 13px; }
+    .faq { display: grid; gap: 9px; margin-top: 17px; }
+    details { padding: 15px 17px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    summary { cursor: pointer; color: var(--text); font-weight: 700; font-size: 14px; line-height: 1.5; }
+    details p { margin: 10px 0 0; font-size: 13px; }
+    .sources { margin-top: 23px; padding: 20px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.025); }
+    .sources h3 { margin-bottom: 10px; }
+    .sources ul { margin: 0; padding-left: 19px; color: var(--muted); }
+    .sources li { margin: 8px 0; font-size: 13px; }
+    .end-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 20px 0 0; padding: 22px; border: 1px solid rgba(157,231,194,.2); border-radius: 18px; background: linear-gradient(120deg, rgba(157,231,194,.08), rgba(16,23,34,.95)); }
+    .end-card strong { display: block; margin-bottom: 4px; }
+    .end-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .end-card a { white-space: nowrap; padding: 9px 12px; border: 1px solid rgba(157,231,194,.28); border-radius: 10px; font-size: 12px; font-weight: 750; }
+    footer { padding: 27px 0 43px; border-top: 1px solid var(--line); color: var(--subtle); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-inner a { color: var(--muted); }
+    @media (max-width: 850px) {
+      .layout { grid-template-columns: 1fr; gap: 10px; }
+      .toc { position: static; padding: 5px 0 16px; border-bottom: 1px solid var(--line); }
+      .toc nav { display: flex; overflow-x: auto; gap: 5px; padding-bottom: 4px; }
+      .toc a { white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; }
+      .toc-title { margin-left: 0; }
+      .wheel-panel { grid-template-columns: 1fr; }
+      .wheel-key { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .hero { padding: 54px 0 33px; }
+      .top-label { font-size: 11px; }
+      .card-grid, .realm-grid, .link-list { grid-template-columns: 1fr; }
+      .wheel-panel { padding: 12px; }
+      .wheel-key { grid-template-columns: 1fr; }
+      .answer-box { padding: 18px; }
+      .end-card { align-items: flex-start; flex-direction: column; }
+      h2 { font-size: 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html" aria-label="Понятные инструкции от Мистера Кибби"><span class="brand-mark">МК</span><span>Понятные инструкции <small style="display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.04em">от Мистера Кибби</small></span></a>
+      <a class="top-label" href="../index.html">← Все статьи</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap">
+      <header class="hero" aria-labelledby="page-title">
+        <div class="eyebrow">Буддийская символика · объяснение с нуля</div>
+        <h1 id="page-title">Колесо <span>сансары</span>: что это и как его читать</h1>
+        <p class="lead">На буддийских рисунках можно увидеть большое колесо, которое держит страшная фигура. Внутри — животные, люди, другие существа и множество маленьких сцен. Это не просто украшение. Каждая часть объясняет определённую идею. Сейчас разберём рисунок по порядку: от самого центра к самому краю.</p>
+        <div class="hero-meta">
+          <span class="pill">☸️ Буддизм</span>
+          <span class="pill">◉ Символика и понятия</span>
+          <span class="pill">◷ Около 12–15 минут</span>
+        </div>
+        <div class="answer-box">
+          <strong>Главная мысль в двух предложениях</strong>
+          <p><b>Колесо сансары</b> — это рисунок, который показывает круговорот рождения, смерти и нового рождения. Он объясняет, почему, согласно буддийскому учению, существа продолжают испытывать страдание и что нужно изменить, чтобы освободиться от этого круга.</p>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="toc" aria-label="Содержание статьи">
+          <div class="toc-title">Содержание</div>
+          <nav>
+            <a href="#samsara">Что такое сансара</a>
+            <a href="#how-to-read">Как устроено колесо</a>
+            <a href="#poisons">Три яда в центре</a>
+            <a href="#karma">Кольцо кармы</a>
+            <a href="#realms">Шесть миров</a>
+            <a href="#links">Двенадцать звеньев</a>
+            <a href="#yama">Яма и Будда</a>
+            <a href="#whole-picture">Как всё связано</a>
+            <a href="#mistakes">Частые заблуждения</a>
+            <a href="#faq">Вопросы и ответы</a>
+          </nav>
+        </aside>
+
+        <article>
+          <section id="samsara">
+            <div class="section-kicker">Шаг 1 · Начинаем с самого простого</div>
+            <h2>Что такое сансара?</h2>
+            <p><b>Сансара</b> — это круговорот рождения, жизни, смерти и нового рождения. Так этот круговорот описывают в буддийском учении.</p>
+            <p>Представьте последовательность:</p>
+            <div class="flow" aria-label="Круговорот сансары">
+              <span>Рождение</span><b>→</b><span>Жизнь</span><b>→</b><span>Старение</span><b>→</b><span>Смерть</span><b>→</b><span>Новое рождение</span><b>↻</b>
+            </div>
+            <p>Смерть в этой схеме не считается окончанием всего. После неё, согласно традиционному буддийскому представлению о перерождении, возникает новое рождение. Затем снова идут жизнь, старение и смерть. И так продолжается, пока сохраняются причины, которые поддерживают сансару.</p>
+            <p>Почему этот круг вообще продолжается? Буддийское объяснение указывает на <b>неведение, привязанность, отвращение и поступки, которые они порождают</b>. Человек не всегда понимает, почему он страдает. Он цепляется за то, что приятно, отталкивает то, что неприятно, и снова и снова действует под влиянием этих привычек.</p>
+            <div class="simple-line">Проще говоря: сансара — это не просто «жизнь по кругу». Это круговорот существования, который, согласно буддизму, продолжается из-за определённых причин.</div>
+            <h3>Это значит, что одна и та же душа переселяется из тела в тело?</h3>
+            <p>Не совсем. В буддизме обычно говорят о <b>перерождении</b>, но это не означает, что существует вечная и неизменная душа, которая просто переезжает из одного тела в другое. Буддийское учение ставит под сомнение существование такого постоянного «я».</p>
+            <p>Чтобы не усложнять: речь идёт о продолжении причин и последствий, а не о том, что внутри каждого человека сидит маленький неизменный предмет под названием «душа».</p>
+            <div class="note">
+              <span class="note-icon">i</span>
+              <p><b>Важно.</b> Сейчас мы объясняем традиционную буддийскую картину мира. Это религиозное учение о перерождении, а не научно установленный факт, который можно проверить так же, как температуру или скорость.</p>
+            </div>
+          </section>
+
+          <section id="how-to-read">
+            <div class="section-kicker">Шаг 2 · Смотрим на рисунок</div>
+            <h2>Как устроено Колесо сансары?</h2>
+            <p>У колеса несколько круглых частей. Они расположены одна внутри другой. Представьте мишень: в ней есть центр, кольца вокруг центра и внешний край.</p>
+            <p>На Колесе сансары тоже есть такие уровни. У каждого уровня своё значение. Чтобы не запутаться, будем читать изображение <b>от центра наружу</b>.</p>
+
+            <div class="wheel-panel">
+              <svg class="wheel-svg" viewBox="0 0 430 410" role="img" aria-labelledby="wheel-title wheel-desc">
+                <title id="wheel-title">Упрощённая схема Колеса сансары</title>
+                <desc id="wheel-desc">В центре находятся три яда. Следующее кольцо показывает карму, затем идут шесть миров, а по внешнему краю — двенадцать звеньев причинного возникновения.</desc>
+                <circle cx="205" cy="205" r="174" fill="#111a26" stroke="#8194aa" stroke-width="22"/>
+                <circle cx="205" cy="205" r="174" fill="none" stroke="#d2dbe5" stroke-width="3" stroke-dasharray="2 88.5" transform="rotate(-90 205 205)"/>
+                <circle cx="205" cy="205" r="126" fill="none" stroke="#365e59" stroke-width="62" stroke-dasharray="124 8" transform="rotate(-90 205 205)"/>
+                <circle cx="205" cy="205" r="70" fill="none" stroke="#9a794c" stroke-width="48" stroke-dasharray="210 230" transform="rotate(-90 205 205)"/>
+                <circle cx="205" cy="205" r="70" fill="none" stroke="#486b8c" stroke-width="48" stroke-dasharray="210 230" transform="rotate(90 205 205)"/>
+                <circle cx="205" cy="205" r="42" fill="#182637" stroke="#9de7c2" stroke-width="2"/>
+                <text x="205" y="198" text-anchor="middle" fill="#edf3fb" font-size="20">🐖 🐓</text>
+                <text x="205" y="219" text-anchor="middle" fill="#9de7c2" font-size="10" font-weight="800">ТРИ ЯДА</text>
+                <text x="205" y="116" text-anchor="middle" fill="#edf3fb" font-size="11" font-weight="800">6 МИРОВ</text>
+                <text x="205" y="39" text-anchor="middle" fill="#edf3fb" font-size="10" font-weight="800">12 ЗВЕНЬЕВ</text>
+                <path d="M205 151 L205 133" stroke="#edf3fb" stroke-width="1.4" opacity=".8"/>
+                <path d="M205 259 L205 278" stroke="#edf3fb" stroke-width="1.4" opacity=".8"/>
+                <text x="205" y="296" text-anchor="middle" fill="#edf3fb" font-size="10" font-weight="800">КАРМА</text>
+                <circle cx="205" cy="31" r="5" fill="#9de7c2"/>
+                <circle cx="291" cy="54" r="5" fill="#9de7c2"/>
+                <circle cx="356" cy="119" r="5" fill="#9de7c2"/>
+                <circle cx="379" cy="205" r="5" fill="#9de7c2"/>
+                <circle cx="356" cy="291" r="5" fill="#9de7c2"/>
+                <circle cx="291" cy="356" r="5" fill="#9de7c2"/>
+                <circle cx="205" cy="379" r="5" fill="#9de7c2"/>
+                <circle cx="119" cy="356" r="5" fill="#9de7c2"/>
+                <circle cx="54" cy="291" r="5" fill="#9de7c2"/>
+                <circle cx="31" cy="205" r="5" fill="#9de7c2"/>
+                <circle cx="54" cy="119" r="5" fill="#9de7c2"/>
+                <circle cx="119" cy="54" r="5" fill="#9de7c2"/>
+              </svg>
+              <div class="wheel-key">
+                <div class="wheel-key-item"><span class="key-number">1</span><div><strong>Центр — три яда</strong><span>Неведение, привязанность и отвращение. Они поддерживают круговорот.</span></div></div>
+                <div class="wheel-key-item"><span class="key-number">2</span><div><strong>Следующее кольцо — карма</strong><span>Поступки и их последствия. На рисунке часто показаны светлый и тёмный пути.</span></div></div>
+                <div class="wheel-key-item"><span class="key-number">3</span><div><strong>Дальше — шесть миров</strong><span>Разные виды рождения и существования.</span></div></div>
+                <div class="wheel-key-item"><span class="key-number">4</span><div><strong>Внешний край — двенадцать звеньев</strong><span>Причины и последствия, из которых складывается сансарический круг.</span></div></div>
+              </div>
+            </div>
+            <p class="muted">Это учебная схема, а не точная копия одной конкретной картины. В настоящих изображениях вместо простых кругов можно увидеть множество животных, людей и небольших сюжетов. Их расположение и детали иногда отличаются.</p>
+          </section>
+
+          <section id="poisons">
+            <div class="section-kicker">Шаг 3 · Самый центр</div>
+            <h2>Три яда: почему колесо продолжает вращаться?</h2>
+            <p>В самом центре часто нарисованы три животных: <b>свинья, петух и змея</b>. Они обозначают три состояния ума, которые в буддизме называют «тремя ядами».</p>
+            <p>Слово «яд» здесь не нужно понимать буквально. Речь не о настоящем веществе. Так называют внутренние состояния, которые мешают человеку ясно видеть происходящее и усиливают страдание.</p>
+            <div class="card-grid">
+              <div class="info-card">
+                <div class="card-icon" aria-hidden="true">🐖</div>
+                <h3>1. Неведение — свинья</h3>
+                <p><b>Неведение</b> — это непонимание того, как устроены вещи. Например, человек считает, что приятное чувство можно навсегда удержать, а неприятное можно полностью исключить. Он не замечает, что всё меняется и зависит от причин.</p>
+              </div>
+              <div class="info-card">
+                <div class="card-icon" aria-hidden="true">🐓</div>
+                <h3>2. Привязанность — птица или петух</h3>
+                <p><b>Привязанность</b> — это сильное желание получить приятное и не отпускать его. Например: «Я хочу эту вещь. Мне нужно, чтобы она была у меня. Без неё я не буду счастлив».</p>
+              </div>
+              <div class="info-card">
+                <div class="card-icon" aria-hidden="true">🐍</div>
+                <h3>3. Отвращение — змея</h3>
+                <p><b>Отвращение</b> — это желание оттолкнуть неприятное, избавиться от него любой ценой. Сюда относят злость, ненависть и сильное неприятие.</p>
+              </div>
+              <div class="info-card">
+                <div class="card-icon" aria-hidden="true">↻</div>
+                <h3>Почему они в одном центре?</h3>
+                <p>Потому что эти состояния подпитывают друг друга. Мы чего-то не понимаем, начинаем цепляться за приятное или злиться на неприятное, а затем ещё сильнее запутываемся.</p>
+              </div>
+            </div>
+            <p>На некоторых изображениях животные кусают друг друга или держатся за хвосты. Это показывает, что три яда связаны между собой. Они не существуют как три полностью отдельные проблемы.</p>
+            <div class="simple-line">Запомните простую формулу: <b>неведение</b> мешает понять ситуацию, <b>привязанность</b> заставляет цепляться за желаемое, а <b>отвращение</b> заставляет бороться с нежелаемым.</div>
+          </section>
+
+          <section id="karma">
+            <div class="section-kicker">Шаг 4 · Следующее кольцо</div>
+            <h2>Карма: почему поступки имеют последствия?</h2>
+            <p>Следующий круг обычно показывает существ, которые движутся вверх или вниз. В одной части изображена светлая дорога, в другой — тёмная.</p>
+            <p>Этот круг объясняет <b>карму</b>. В буддизме карма связана прежде всего с намеренными действиями: тем, что мы делаем, говорим и поддерживаем своими мыслями. Такие действия создают причины, которые могут привести к определённым последствиям.</p>
+            <div class="card-grid">
+              <div class="info-card">
+                <div class="number">Светлый путь</div>
+                <h3>Благие действия</h3>
+                <p>Действия, в которых больше доброжелательности, щедрости, честности и заботы, считаются благими. На схеме их связывают с более благоприятным направлением перерождения.</p>
+              </div>
+              <div class="info-card">
+                <div class="number">Тёмный путь</div>
+                <h3>Неблагие действия</h3>
+                <p>Действия, основанные на жестокости, обмане, ненависти и сильной жадности, считаются неблагими. На схеме их связывают с более мучительным направлением перерождения.</p>
+              </div>
+            </div>
+            <h3>Карма — это не магический счётчик хороших и плохих поступков</h3>
+            <p>Не стоит представлять карму как строгую таблицу: сделал десять хороших дел — получил награду, сделал одно плохое — получил наказание. В буддийских объяснениях важны намерение, действие, обстоятельства и множество других причин.</p>
+            <p>Карма также не означает, что каждый человек сам «заслужил» любую беду, которая с ним произошла. Это слишком грубое и ошибочное упрощение. Карма — часть более широкой картины причин и условий, а не универсальное объяснение каждой неприятности.</p>
+            <div class="note warn">
+              <span class="note-icon">!</span>
+              <p><b>Не путайте карму с судьбой.</b> Карма не означает, что всё заранее решено и человек ничего не может изменить. Буддийское учение, наоборот, уделяет большое внимание тому, какие действия человек выбирает сейчас.</p>
+            </div>
+          </section>
+
+          <section id="realms">
+            <div class="section-kicker">Шаг 5 · Большое кольцо с существами</div>
+            <h2>Шесть миров: кто может родиться в сансаре?</h2>
+            <p>Следующая большая часть колеса разделена на шесть областей. Их называют <b>шестью мирами</b> или шестью сферами существования.</p>
+            <p>В традиционном буддийском понимании это разные формы рождения. То есть речь не только о настроении человека, но и о том, в каком мире он может родиться в результате причин и кармы.</p>
+            <p>Чтобы понять символику, удобно представить каждый мир как отдельный тип жизни со своими главными переживаниями.</p>
+
+            <div class="realm-grid">
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">👑</span><h3>1. Мир богов</h3></div>
+                <p>В этом мире очень много удовольствий, комфорта и долгой жизни. Кажется, что всё прекрасно. Но именно поэтому существа могут забыть о практике и не замечать, что их благополучие тоже не вечно.</p>
+              </div>
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">⚔️</span><h3>2. Мир асуров</h3></div>
+                <p>Асуры — могущественные существа, которых часто описывают через зависть, соперничество и борьбу. Они постоянно сравнивают себя с другими и хотят победить или получить больше.</p>
+              </div>
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">🧑</span><h3>3. Мир людей</h3></div>
+                <p>В человеческой жизни есть и радость, и боль. Важная особенность этого мира — возможность задуматься о происходящем, услышать учение и сознательно менять своё поведение. Поэтому человеческое рождение в буддизме часто считают особенно ценным.</p>
+              </div>
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">🐘</span><h3>4. Мир животных</h3></div>
+                <p>Животные в этой схеме часто символизируют жизнь, в которой много страха, опасности и необходимости выживать. Возможностей спокойно изучать учение и сознательно выбирать действия может быть меньше.</p>
+              </div>
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">👻</span><h3>5. Мир голодных духов</h3></div>
+                <p>Этих существ называют претами. Их изображают с огромными животами и очень узкими горлами. Они постоянно хотят есть и пить, но почти не могут утолить голод и жажду. Это образ ненасытного желания.</p>
+              </div>
+              <div class="realm">
+                <div class="realm-top"><span class="realm-emoji" aria-hidden="true">🔥</span><h3>6. Мир адских существ</h3></div>
+                <p>Здесь существа испытывают крайне сильные мучения. В рисунках показывают горячие или ледяные области, пытки и беспомощность. В буддийской картине мира это не вечное наказание: такое рождение тоже обусловлено причинами и не длится бесконечно.</p>
+              </div>
+            </div>
+
+            <div class="note">
+              <span class="note-icon">i</span>
+              <p><b>Почему иногда изображено пять миров, а не шесть?</b> В некоторых изображениях асуров не выделяют в отдельный мир, а включают в мир богов или показывают иначе. Поэтому число и расположение областей могут различаться. Здесь мы разбираем распространённую схему из шести миров.</p>
+            </div>
+            <p>Иногда эти шесть миров также используют как образы состояний ума. Например, человек может настолько завидовать другим, что его жизнь превращается в постоянное соперничество. Это психологическое сравнение может помочь понять картинку, но оно не отменяет традиционное значение миров как областей перерождения.</p>
+          </section>
+
+          <section id="links">
+            <div class="section-kicker">Шаг 6 · Самый внешний край</div>
+            <h2>Двенадцать звеньев: как одна причина ведёт к другой</h2>
+            <p>По внешнему краю колеса часто нарисованы двенадцать небольших сцен. Они обозначают <b>двенадцать звеньев взаимозависимого возникновения</b>.</p>
+            <p>Название сложное. Смысл проще: это цепочка причин и последствий. Одно условие помогает появиться следующему, следующее поддерживает ещё одно — и так возникает круговорот рождения, старения и смерти.</p>
+            <p>Разберём каждое звено простыми словами. Переводы названий в разных книгах могут немного отличаться.</p>
+            <div class="link-list">
+              <div class="link-item"><div><strong>Неведение</strong><span>Мы не понимаем, как устроены вещи, не видим причин страдания и ошибаемся в своих представлениях.</span></div></div>
+              <div class="link-item"><div><strong>Формирующие действия</strong><span>Из-за непонимания мы действуем определённым образом. Наши намерения и привычки создают новые причины.</span></div></div>
+              <div class="link-item"><div><strong>Сознание</strong><span>Возникает поток осознавания, связанный с этими причинами. В традиционном объяснении он связан и с новым рождением.</span></div></div>
+              <div class="link-item"><div><strong>Имя и форма</strong><span>Появляется психическая и телесная сторона существования: то, что мы переживаем умом и телом.</span></div></div>
+              <div class="link-item"><div><strong>Шесть источников чувств</strong><span>Задействованы зрение, слух, обоняние, вкус, осязание и ум. Ум тоже считается своего рода «чувством».</span></div></div>
+              <div class="link-item"><div><strong>Соприкосновение</strong><span>Орган чувств, предмет и соответствующее сознание встречаются. Например, глаз видит чашку, а сознание замечает её.</span></div></div>
+              <div class="link-item"><div><strong>Чувство</strong><span>Опыт ощущается как приятный, неприятный или нейтральный. Это ещё не обязательно сильная эмоция.</span></div></div>
+              <div class="link-item"><div><strong>Жажда</strong><span>Нам хочется снова получить приятное, избавиться от неприятного или удержать то, что кажется нейтральным и привычным.</span></div></div>
+              <div class="link-item"><div><strong>Привязанность</strong><span>Желание становится сильнее. Мы цепляемся за предмет, впечатление, мнение или представление о себе и не хотим отпускать.</span></div></div>
+              <div class="link-item"><div><strong>Становление</strong><span>Привязанность и действия создают условия для дальнейшего существования и нового рождения.</span></div></div>
+              <div class="link-item"><div><strong>Рождение</strong><span>Возникает новая жизнь в определённой форме существования.</span></div></div>
+              <div class="link-item"><div><strong>Старение и смерть</strong><span>Всё родившееся меняется, стареет и умирает. Так круг замыкается и создаются условия для нового витка.</span></div></div>
+            </div>
+            <h3>Это двенадцать шагов, которые каждый человек проходит за один день?</h3>
+            <p>Не обязательно. В традиционном объяснении эти звенья могут описывать связь причин и перерождения на протяжении нескольких жизней. Некоторые объяснения также показывают, как похожая цепочка проявляется в отдельном моменте опыта — например, когда мы что-то увидели, почувствовали желание и начали за него цепляться.</p>
+            <p>Поэтому не нужно пытаться буквально найти в своей сегодняшней жизни двенадцать отдельных событий в строгом порядке. Главное — увидеть идею: <b>страдание поддерживается цепочкой взаимосвязанных причин</b>.</p>
+          </section>
+
+          <section id="yama">
+            <div class="section-kicker">Шаг 7 · Фигура за пределами колеса</div>
+            <h2>Кто держит колесо и почему рядом изображён Будда?</h2>
+            <h3>Яма — фигура, которая держит колесо</h3>
+            <p>На многих тибетских изображениях колесо держит большая грозная фигура. Обычно это <b>Яма</b> — владыка смерти.</p>
+            <p>Его образ напоминает: всё, что родилось и зависит от причин и условий, не вечно. Даже самые могущественные существа и самые приятные миры не защищены от перемен и смерти.</p>
+            <p>Яма не означает, что кто-то случайно решает наказать человека. В изображении он показывает власть непостоянства и смерти над всем, что остаётся внутри сансары.</p>
+            <h3>Почему Будда находится снаружи?</h3>
+            <p>На некоторых изображениях за пределами колеса нарисован Будда. Иногда он указывает на луну. Это очень важная деталь.</p>
+            <p>Колесо показывает обусловленное существование — жизнь, которая продолжается под влиянием неведения, привязанности и других причин. Будда снаружи напоминает, что <b>освобождение возможно</b>: не обязательно бесконечно оставаться внутри этого круга.</p>
+            <p>Луна в таких изображениях часто служит символом освобождения, которое называют <b>нирваной</b>. Нирвана — не ещё один, самый комфортный мир внутри колеса. Это освобождение от причин, которые поддерживают сансару.</p>
+            <div class="simple-line">Если совсем просто: Яма напоминает, что всё внутри колеса непостоянно. Будда показывает, что существует путь к освобождению от самого круговорота.</div>
+          </section>
+
+          <section id="whole-picture">
+            <div class="section-kicker">Собираем всё вместе</div>
+            <h2>Как все части колеса связаны друг с другом?</h2>
+            <p>Теперь посмотрим на всю картину целиком. Каждое кольцо отвечает на свой вопрос:</p>
+            <div class="steps">
+              <div class="readstep"><p><b>В центре — почему круг начинается.</b> Неведение, привязанность и отвращение заставляют существ снова и снова действовать под влиянием заблуждений и желаний.</p></div>
+              <div class="readstep"><p><b>Следующее кольцо — какие причины мы создаём.</b> Намеренные поступки и привычки имеют последствия. Это тема кармы.</p></div>
+              <div class="readstep"><p><b>Дальше — где может возникнуть новое рождение.</b> Шесть миров показывают разные формы существования в сансаре.</p></div>
+              <div class="readstep"><p><b>По краю — как работает цепочка причин.</b> Двенадцать звеньев подробно показывают, как неведение связано с рождением, старением и смертью.</p></div>
+              <div class="readstep"><p><b>Снаружи — напоминание об освобождении.</b> Яма показывает непостоянство, а Будда указывает на возможность выйти из круговорота.</p></div>
+            </div>
+            <p>Одна короткая схема поможет запомнить общий смысл:</p>
+            <div class="flow">
+              <span>Неведение</span><b>→</b><span>Три яда</span><b>→</b><span>Действия и карма</span><b>→</b><span>Перерождение</span><b>→</b><span>Старение и смерть</span><b>↻</b>
+            </div>
+            <p>Это упрощённое объяснение. В буддийском учении причины действуют сложнее и зависят друг от друга. Но для первого знакомства с рисунком этой схемы достаточно.</p>
+          </section>
+
+          <section id="mistakes">
+            <div class="section-kicker">Чтобы не перепутать</div>
+            <h2>Четыре частых заблуждения</h2>
+            <div class="card-grid">
+              <div class="info-card">
+                <h3>«Колесо — это просто круговорот плохих событий»</h3>
+                <p>Нет. Оно объясняет более широкую идею: рождение, смерть и перерождение, а также причины, из-за которых этот круг продолжается.</p>
+              </div>
+              <div class="info-card">
+                <h3>«Карма — это наказание за плохие поступки»</h3>
+                <p>Не совсем. Карма — это связь намеренных действий с последствиями. Это не судья, который выдаёт награды и штрафы.</p>
+              </div>
+              <div class="info-card">
+                <h3>«Шесть миров — это шесть вечных мест»</h3>
+                <p>Нет. В традиционном учении это обусловленные формы рождения. Даже боги не остаются в своём мире навсегда.</p>
+              </div>
+              <div class="info-card">
+                <h3>«Буддизм говорит, что мир не существует»</h3>
+                <p>Так говорить слишком просто и неправильно. Учение о зависимом возникновении говорит о причинах и условиях, а не о том, что повседневного мира вообще нет.</p>
+              </div>
+            </div>
+            <div class="note warn">
+              <span class="note-icon">!</span>
+              <p><b>И ещё одно уточнение.</b> Колесо сансары — религиозный символ. Его не нужно воспринимать как научную диаграмму или буквальную карту космоса с точными расстояниями между мирами.</p>
+            </div>
+          </section>
+
+          <section id="faq">
+            <div class="section-kicker">Короткие ответы</div>
+            <h2>Частые вопросы о Колесе сансары</h2>
+            <div class="faq">
+              <details>
+                <summary>Колесо сансары и Колесо жизни — это одно и то же?</summary>
+                <p>Обычно да. Изображение также называют бхавачакрой, Колесом бытия или Колесом становления. Название может немного отличаться, но речь идёт о символической схеме сансары.</p>
+              </details>
+              <details>
+                <summary>Почему колесо круглое?</summary>
+                <p>Круг показывает повторяющийся процесс без простого конца: рождение, старение, смерть и новое рождение. Он также помогает показать, что причины и последствия связаны между собой.</p>
+              </details>
+              <details>
+                <summary>Что означают три животных в центре?</summary>
+                <p>Обычно свинья обозначает неведение, птица или петух — привязанность, а змея — отвращение. Вместе они называются тремя ядами.</p>
+              </details>
+              <details>
+                <summary>Почему существует шесть миров?</summary>
+                <p>В распространённой тибетской схеме показывают шесть форм перерождения: мир богов, асуров, людей, животных, голодных духов и адских существ. В других изображениях число областей может отличаться.</p>
+              </details>
+              <details>
+                <summary>Мир богов — это уже освобождение?</summary>
+                <p>Нет. Мир богов считается очень приятным, но он всё ещё находится внутри сансары. Его обитатели тоже подвержены изменениям и смерти.</p>
+              </details>
+              <details>
+                <summary>Адские миры в буддизме вечные?</summary>
+                <p>В классической буддийской картине мира это не вечное наказание. Рождение в таком мире обусловлено причинами и продолжается не бесконечно.</p>
+              </details>
+              <details>
+                <summary>Нирвана — это седьмой мир за пределами шести?</summary>
+                <p>Нет. Нирвана не считается ещё одним миром сансары. Её описывают как освобождение от причин, которые поддерживают круговорот.</p>
+              </details>
+              <details>
+                <summary>Все буддийские школы одинаково изображают колесо?</summary>
+                <p>Нет. Колесо особенно характерно для тибетской буддийской живописи. Количество миров, расположение фигур и некоторые детали могут различаться в разных традициях и изображениях.</p>
+              </details>
+            </div>
+
+            <div class="sources">
+              <h3>Источники и материалы для дальнейшего чтения</h3>
+              <ul>
+                <li><a href="https://tricycle.org/magazine/bhavacakra-wheel-of-life/" target="_blank" rel="noopener noreferrer">Tricycle — What’s in a Symbol? Bhavacakra.</a> Объясняет устройство изображения: три яда, карму, миры и двенадцать звеньев.</li>
+                <li><a href="https://wwws.loc.gov/exhibits/exploring-the-early-americas/interactives/heavens-and-earth/earth/artifact5-earth.html" target="_blank" rel="noopener noreferrer">Библиотека Конгресса США — Wheel of Life.</a> Краткое описание тибетской буддийской картины и её основных элементов.</li>
+                <li><a href="https://www.saet.ac.uk/Buddhism/DependentArising" target="_blank" rel="noopener noreferrer">St Andrews Encyclopaedia of Theology — Dependent Arising.</a> Академическое объяснение зависимого возникновения и двенадцати звеньев.</li>
+                <li><a href="https://wellcomecollection.org/works/yan4zkwn" target="_blank" rel="noopener noreferrer">Wellcome Collection — Yama holding the Bhavacakra.</a> Описание музейного изображения Ямы, Колеса жизни, шести миров и двенадцати причинных звеньев.</li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="end-card">
+            <div>
+              <strong>Теперь вы знаете, как читать Колесо сансары.</strong>
+              <p>Другие инструкции и разборы собраны на главной странице.</p>
+            </div>
+            <a href="../index.html">Все статьи ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Понятные инструкции от Мистера Кибби</span>
+      <a href="../index.html">← Вернуться к статьям</a>
+    </div>
+  </footer>
+</body>
+</html>
