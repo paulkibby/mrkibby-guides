@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Пошаговая инструкция от Мистера Кибби: где найти Shift и правую кнопку мыши, как нажать и одновременно удерживать обе кнопки.">
+  <title>Как удерживать Shift и правую кнопку мыши — от Мистера Кибби</title>
+  <link rel="canonical" href="https://paulkibby.github.io/shift-guide/articles/shift-and-right-click.html">
+  <meta property="og:title" content="Как удерживать Shift и правую кнопку мыши">
+  <meta property="og:description" content="Пошаговая инструкция без спешки и сложных терминов.">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      --bg: #090d14;
+      --surface: #101722;
+      --surface-2: #151f2c;
+      --surface-3: #1b2938;
+      --text: #edf3fb;
+      --muted: #a2afbf;
+      --subtle: #718096;
+      --line: rgba(174, 194, 218, .14);
+      --accent: #9de7c2;
+      --accent-2: #72c9a0;
+      --blue: #91baff;
+      --amber: #ffd28a;
+      --shadow: 0 22px 70px rgba(0,0,0,.28);
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 18% -8%, rgba(80, 143, 119, .16), transparent 34rem),
+        radial-gradient(ellipse at 95% 12%, rgba(74, 116, 180, .13), transparent 32rem),
+        var(--bg);
+      font: 16px/1.72 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: .005em;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(9, 13, 20, .78);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -.025em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px;
+      color: #07120d; background: var(--accent); font-size: 17px; font-weight: 900;
+      box-shadow: 0 0 28px rgba(157,231,194,.2);
+    }
+    .top-label { color: var(--muted); font-size: 13px; }
+    .hero { padding: 82px 0 50px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px;
+      border: 1px solid rgba(157,231,194,.22); border-radius: 999px;
+      background: rgba(157,231,194,.07); color: var(--accent); font-size: 12px;
+      font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    h1 { max-width: 900px; margin: 22px 0 18px; font-size: clamp(42px, 7vw, 76px); line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .lead { max-width: 760px; color: #bac6d5; font-size: clamp(17px, 2vw, 20px); line-height: 1.7; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border-radius: 10px; background: rgba(255,255,255,.045); border: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .hero-panel {
+      margin-top: 42px; padding: 26px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 26px;
+      border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(135deg, rgba(21,31,44,.96), rgba(13,20,30,.9)); box-shadow: var(--shadow);
+    }
+    .hero-panel h2 { margin: 0 0 8px; font-size: 19px; letter-spacing: -.02em; }
+    .hero-panel p { color: var(--muted); margin: 0; font-size: 14px; }
+    .quick-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 19px; }
+    .quick-step { padding: 13px; border-radius: 15px; background: rgba(255,255,255,.035); border: 1px solid var(--line); }
+    .quick-step b { display: block; color: var(--accent); font-size: 12px; margin-bottom: 4px; }
+    .quick-step span { color: #dce5ef; font-size: 13px; line-height: 1.45; display: block; }
+    .combo-preview { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 14px; padding: 16px; border-radius: 18px; background: rgba(5,10,16,.45); border: 1px solid rgba(255,255,255,.06); }
+    .combo-keys { display: flex; align-items: center; gap: 9px; }
+    .keycap { min-width: 82px; height: 62px; display: grid; place-items: center; padding: 0 15px; border-radius: 12px; color: #eaf3fc; background: linear-gradient(180deg, #344354, #202c3a); border: 1px solid #536478; border-bottom-width: 5px; box-shadow: 0 7px 0 #0a111a; font-weight: 800; font-size: 16px; }
+    .keycap.accent { color: #07150e; background: linear-gradient(180deg, #b7f3d3, #82d9ad); border-color: #c4f8dc; border-bottom-color: #4d9b75; }
+    .plus { color: var(--subtle); font-size: 22px; font-weight: 400; }
+    .mouse-mini { width: 57px; height: 72px; position: relative; border: 2px solid #8090a2; border-radius: 27px 27px 19px 19px; background: linear-gradient(110deg, #263443, #17222e); overflow: hidden; }
+    .mouse-mini::before { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 27px; transform: translateX(-50%); background: #8090a2; }
+    /* Подсвечиваем именно правую кнопку: схема показана сверху, как при обычном хвате мыши. */
+    .mouse-mini::after { content: ""; position: absolute; top: 5px; right: 5px; width: 20px; height: 26px; border-radius: 4px 14px 4px 4px; background: var(--accent); opacity: .95; box-shadow: 0 0 13px rgba(157,231,194,.28); }
+    .combo-caption { color: var(--muted); font-size: 12px; text-align: center; }
+    .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; align-items: start; padding-bottom: 90px; }
+    .toc { position: sticky; top: 92px; padding: 18px 0; }
+    .toc-title { color: var(--subtle); text-transform: uppercase; letter-spacing: .13em; font-size: 10px; font-weight: 850; margin: 0 0 13px 12px; }
+    .toc a { display: block; padding: 8px 12px; color: var(--muted); border-left: 2px solid transparent; border-radius: 0 9px 9px 0; font-size: 13px; line-height: 1.4; }
+    .toc a:hover { color: var(--text); text-decoration: none; background: rgba(255,255,255,.04); border-left-color: var(--accent); }
+    article { min-width: 0; }
+    section { padding: 14px 0 34px; }
+    .section-kicker { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; font-weight: 850; }
+    h2 { margin: 8px 0 13px; font-size: clamp(27px, 4vw, 38px); line-height: 1.16; letter-spacing: -.045em; }
+    h3 { margin: 0 0 9px; font-size: 19px; letter-spacing: -.025em; }
+    p { margin: 0 0 14px; color: #c1ccda; }
+    .muted { color: var(--muted); }
+    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+    .info-card { padding: 20px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+    .info-card p:last-child { margin-bottom: 0; }
+    .number { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; background: rgba(157,231,194,.1); color: var(--accent); font-weight: 850; font-size: 13px; margin-bottom: 13px; }
+    .callout { display: flex; gap: 13px; margin: 20px 0; padding: 17px 18px; border: 1px solid rgba(145,186,255,.2); border-radius: 16px; background: rgba(85,133,199,.075); }
+    .callout.warn { border-color: rgba(255,210,138,.22); background: rgba(255,210,138,.065); }
+    .callout .symbol { flex: 0 0 26px; height: 26px; display: grid; place-items: center; border-radius: 8px; background: rgba(145,186,255,.12); color: var(--blue); font-weight: 900; }
+    .callout.warn .symbol { color: var(--amber); background: rgba(255,210,138,.12); }
+    .callout p { margin: 0; font-size: 14px; }
+    .diagram { margin: 22px 0; padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, #121c28, #0d141e); overflow: hidden; }
+    .diagram-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+    .diagram-head strong { font-size: 14px; }
+    .diagram-head span { color: var(--subtle); font-size: 11px; }
+    .keyboard { max-width: 710px; margin: 0 auto; padding: 17px; border-radius: 15px; border: 1px solid #3c4d60; background: linear-gradient(145deg, #253344, #172230); box-shadow: 0 16px 26px rgba(0,0,0,.2); }
+    .key-row { display: flex; gap: 6px; margin-bottom: 6px; justify-content: center; }
+    .key { min-width: 0; flex: 1; min-height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid #56677b; border-bottom-width: 4px; border-radius: 7px; background: linear-gradient(180deg, #3a4b5e, #293748); color: #dce6f1; font-size: 10px; font-weight: 700; text-align: center; padding: 3px; }
+    .key.wide { flex: 1.55; }
+    .key.xwide { flex: 2.2; }
+    .key.space { flex: 5.4; }
+    .key.shift { flex: 2.25; background: linear-gradient(180deg, #b8f1d1, #7bc99f); border-color: #c8f6dd; border-bottom-color: #4a9b72; color: #092015; font-size: 12px; box-shadow: 0 0 22px rgba(125,216,171,.16); }
+    .keyboard-caption { margin: 15px 0 0; text-align: center; color: var(--muted); font-size: 12px; }
+    .legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 12px; color: var(--muted); font-size: 11px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .swatch { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); }
+    .mouse-diagram { display: flex; align-items: center; justify-content: center; gap: 32px; padding: 8px 0; }
+    .mouse-large { position: relative; width: 150px; height: 205px; border: 3px solid #718397; border-radius: 76px 76px 48px 48px; background: linear-gradient(110deg, #29394b, #172330); box-shadow: inset 0 0 25px rgba(0,0,0,.35), 0 15px 25px rgba(0,0,0,.22); }
+    .mouse-large .split { position: absolute; top: 0; left: 50%; height: 72px; width: 2px; background: #718397; transform: translateX(-50%); }
+    .mouse-large .left-zone, .mouse-large .right-zone { position: absolute; top: 5px; height: 61px; width: 47%; border-radius: 55px 55px 10px 10px; }
+    .mouse-large .left-zone { left: 3px; background: rgba(145,186,255,.17); }
+    .mouse-large .right-zone { right: 3px; background: linear-gradient(145deg, rgba(157,231,194,.95), rgba(104,194,147,.8)); box-shadow: 0 0 24px rgba(157,231,194,.2); }
+    .mouse-large .wheel { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 13px; height: 30px; border-radius: 8px; background: #8798aa; border: 2px solid #b1bfce; z-index: 2; }
+    .mouse-notes { max-width: 290px; }
+    .mouse-notes .legend { justify-content: flex-start; }
+    .step-list { counter-reset: steps; display: grid; gap: 11px; margin: 20px 0; }
+    .step { counter-increment: steps; display: grid; grid-template-columns: 38px 1fr; gap: 13px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+    .step::before { content: counter(steps, decimal-leading-zero); color: var(--accent); font-weight: 900; font-size: 12px; padding-top: 3px; }
+    .step p { margin: 0; font-size: 14px; }
+    .step b { color: var(--text); }
+    .sequence { display: flex; align-items: stretch; gap: 8px; margin: 20px 0; }
+    .sequence-item { flex: 1; padding: 15px 12px; border: 1px solid var(--line); border-radius: 14px; text-align: center; background: var(--surface); }
+    .hold-state { margin: 22px 0; padding: 22px; border: 1px solid rgba(157,231,194,.34); border-radius: 20px; background: linear-gradient(135deg, rgba(157,231,194,.105), rgba(15,24,34,.96) 62%); box-shadow: 0 14px 36px rgba(0,0,0,.16); }
+    .hold-state-label { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 11px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .hold-state-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .hold-state-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 18px 0 13px; }
+    .hold-control { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .hold-control-copy { display: grid; gap: 3px; }
+    .hold-control-copy strong { color: var(--text); font-size: 14px; }
+    .hold-control-copy span { color: var(--accent); font-size: 12px; font-weight: 750; }
+    .hold-plus { color: var(--subtle); font-size: 25px; }
+    .hold-key { display: grid; place-items: center; min-width: 88px; height: 62px; padding: 0 13px; border: 1px solid #c4f8dc; border-bottom: 5px solid #4d9b75; border-radius: 12px; color: #07150e; background: linear-gradient(180deg, #b7f3d3, #82d9ad); box-shadow: 0 7px 0 #0a111a; font-size: 15px; font-weight: 900; }
+    .hold-mouse { position: relative; width: 48px; height: 62px; flex: 0 0 auto; overflow: hidden; border: 2px solid #8090a2; border-radius: 24px 24px 16px 16px; background: linear-gradient(110deg, #263443, #17222e); }
+    .hold-mouse::before { content: ""; position: absolute; top: 0; left: 50%; height: 24px; width: 2px; transform: translateX(-50%); background: #8090a2; }
+    .hold-mouse::after { content: ""; position: absolute; top: 4px; right: 4px; width: 17px; height: 23px; border-radius: 4px 13px 4px 4px; background: var(--accent); box-shadow: 0 0 13px rgba(157,231,194,.3); }
+    .hold-state > p { max-width: 720px; margin: 0 auto; text-align: center; color: #d5e4dc; font-size: 14px; }
+    .hold-state > p strong { color: var(--accent); }
+    @media (max-width: 600px) {
+      .hold-state { padding: 18px 13px; }
+      .hold-state-controls { gap: 10px; }
+      .hold-control { gap: 8px; }
+      .hold-control-copy strong { font-size: 12px; }
+      .hold-control-copy span { font-size: 11px; }
+      .hold-key { min-width: 68px; height: 54px; font-size: 13px; }
+      .hold-mouse { width: 42px; height: 54px; }
+      .hold-mouse::after { width: 15px; height: 20px; }
+    }
+    .sequence-item .n { display: block; color: var(--accent); font-size: 11px; font-weight: 900; margin-bottom: 6px; }
+    .sequence-item strong { display: block; font-size: 13px; line-height: 1.35; }
+    .sequence-item small { display: block; color: var(--muted); font-size: 11px; margin-top: 6px; }
+    .arrow { align-self: center; color: var(--subtle); font-size: 20px; }
+    .checklist { padding: 19px 21px; border-radius: 18px; background: rgba(157,231,194,.055); border: 1px solid rgba(157,231,194,.17); margin: 20px 0; }
+    .checklist h3 { color: var(--accent); }
+    .checklist ul { margin: 0; padding-left: 20px; color: #c5d1de; }
+    .checklist li { margin: 7px 0; }
+    .faq { display: grid; gap: 9px; margin-top: 18px; }
+    details { padding: 15px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    summary { cursor: pointer; color: var(--text); font-weight: 700; font-size: 14px; }
+    details p { margin: 11px 0 0; font-size: 14px; }
+    footer { padding: 28px 0 45px; border-top: 1px solid var(--line); color: var(--subtle); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .backtop { color: var(--muted); }
+    @media (max-width: 850px) {
+      .layout { grid-template-columns: 1fr; gap: 12px; }
+      .toc { position: static; padding: 6px 0 18px; border-bottom: 1px solid var(--line); }
+      .toc nav { display: flex; overflow-x: auto; gap: 5px; padding-bottom: 4px; }
+      .toc a { white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px; }
+      .toc a:hover { border-color: var(--accent); }
+      .toc-title { margin-left: 0; }
+      .hero-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .hero { padding: 56px 0 36px; }
+      .top-label { display: none; }
+      .hero-panel { padding: 17px; }
+      .quick-steps { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .diagram { padding: 15px 10px; }
+      .keyboard { padding: 9px 6px; }
+      .key-row { gap: 3px; margin-bottom: 4px; }
+      .key { min-height: 34px; font-size: 7px; padding: 2px 1px; border-radius: 5px; border-bottom-width: 3px; }
+      .key.shift { font-size: 8px; }
+      .mouse-diagram { gap: 18px; }
+      .mouse-large { width: 112px; height: 160px; }
+      .mouse-large .split { height: 58px; }
+      .mouse-large .left-zone, .mouse-large .right-zone { height: 51px; }
+      .mouse-large .wheel { top: 17px; height: 23px; width: 10px; }
+      .mouse-notes { max-width: 190px; }
+      .sequence { flex-direction: column; }
+      .arrow { transform: rotate(90deg); text-align: center; line-height: 12px; }
+      .sequence-item { display: grid; grid-template-columns: 35px 1fr; text-align: left; align-items: center; }
+      .sequence-item .n { margin: 0; }
+      .sequence-item small { grid-column: 2; margin-top: 3px; }
+      h2 { font-size: 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html" aria-label="Понятные инструкции от Мистера Кибби"><span class="brand-mark">МК</span><span>Понятные инструкции <small style="display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.04em">от Мистера Кибби</small></span></a>
+      <a class="top-label" href="../index.html">← Все статьи</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow">Инструкция с нуля</div>
+        <h1 id="page-title">Как нажимать и удерживать <span>Shift</span> и правую кнопку мыши</h1>
+        <p class="lead">Подробно разберём, где находятся нужные клавиши и кнопки, куда поставить пальцы, насколько сильно нажимать и в какой момент отпускать. В конце выполним комбинацию <b>Shift + правая кнопка мыши</b> — по шагам, без спешки.</p>
+        <div class="hero-meta">
+          <span class="pill">⌨️ Клавиатура</span>
+          <span class="pill">🖱️ Компьютерная мышь</span>
+          <span class="pill">◷ Около 5–7 минут</span>
+        </div>
+        <div class="hero-panel">
+          <div>
+            <h2>Что предстоит сделать</h2>
+            <p>Вся инструкция сводится к трём действиям. Главное различие: нажатие — это короткое действие, а удержание — сохранение нажатого состояния.</p>
+            <div class="quick-steps">
+              <div class="quick-step"><b>01 / НАЙТИ</b><span>Определить клавиши Shift и правую кнопку.</span></div>
+              <div class="quick-step"><b>02 / НАЖАТЬ</b><span>Нажать с обычным, небольшим усилием.</span></div>
+              <div class="quick-step"><b>03 / УДЕРЖАТЬ</b><span>Не отпускать до завершения действия.</span></div>
+            </div>
+          </div>
+          <div class="combo-preview" aria-label="Схема комбинации Shift и правой кнопки мыши">
+            <div class="combo-keys"><div class="keycap accent">Shift</div><span class="plus">+</span><div class="mouse-mini" aria-hidden="true"></div></div>
+            <div class="combo-caption">Удерживаем Shift и ПКМ одновременно.<br>Подсвечена правая кнопка мыши.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="layout">
+        <aside class="toc" aria-label="Содержание статьи">
+          <div class="toc-title">Содержание</div>
+          <nav>
+            <a href="#shift-location">Где находится Shift</a>
+            <a href="#shift-press">Как нажать Shift</a>
+            <a href="#shift-hold">Как удерживать Shift</a>
+            <a href="#mouse-location">Правая кнопка мыши</a>
+            <a href="#mouse-press">Как нажать и удержать</a>
+            <a href="#combination">Комбинация Shift + ПКМ</a>
+            <a href="#mistakes">Ошибки и вопросы</a>
+          </nav>
+        </aside>
+
+        <article>
+          <section id="shift-location">
+            <div class="section-kicker">Часть 1 · Клавиатура</div>
+            <h2>1. Где находится клавиша Shift</h2>
+            <p><b>Shift</b> — это специальная клавиша-модификатор. Она обычно не выполняет отдельное действие сама по себе, а изменяет действие другой клавиши или команды, пока вы её удерживаете.</p>
+            <p>На стандартной компьютерной клавиатуре клавиш Shift обычно две: <b>левая</b> и <b>правая</b>. Обе выполняют одну и ту же основную функцию — можно использовать любую из них.</p>
+            <div class="diagram">
+              <div class="diagram-head"><strong>Расположение Shift на клавиатуре</strong><span>Упрощённая схема</span></div>
+              <div class="keyboard" role="img" aria-label="Схематичная клавиатура. Клавиши Shift выделены в нижнем ряду слева и справа.">
+                <div class="key-row">
+                  <div class="key">Esc</div><div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key">0</div><div class="key">−</div><div class="key">=</div><div class="key wide">Backspace</div>
+                </div>
+                <div class="key-row">
+                  <div class="key wide">Tab</div><div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div><div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div><div class="key">O</div><div class="key">P</div><div class="key">[</div><div class="key">]</div><div class="key wide">\</div>
+                </div>
+                <div class="key-row">
+                  <div class="key xwide">Caps Lock</div><div class="key">A</div><div class="key">S</div><div class="key">D</div><div class="key">F</div><div class="key">G</div><div class="key">H</div><div class="key">J</div><div class="key">K</div><div class="key">L</div><div class="key">;</div><div class="key">'</div><div class="key xwide">Enter</div>
+                </div>
+                <div class="key-row">
+                  <div class="key shift">⇧ Shift</div><div class="key">Z</div><div class="key">X</div><div class="key">C</div><div class="key">V</div><div class="key">B</div><div class="key">N</div><div class="key">M</div><div class="key">,</div><div class="key">.</div><div class="key">/</div><div class="key shift">⇧ Shift</div>
+                </div>
+                <div class="key-row">
+                  <div class="key wide">Ctrl</div><div class="key">⊞</div><div class="key wide">Alt</div><div class="key space"></div><div class="key wide">Alt</div><div class="key">☰</div><div class="key wide">Ctrl</div>
+                </div>
+              </div>
+              <div class="legend"><span><i class="swatch"></i> Выделенные клавиши Shift</span></div>
+              <p class="keyboard-caption">Ищите длинные клавиши с надписью <b>Shift</b> или символом <b>⇧</b> в нижнем буквенном ряду — слева и справа.</p>
+            </div>
+            <div class="card-grid">
+              <div class="info-card">
+                <div class="number">L</div>
+                <h3>Левый Shift</h3>
+                <p>Находится в нижней левой части буквенного блока: обычно под клавишей Caps Lock и слева от Z. Его удобно нажимать мизинцем левой руки.</p>
+              </div>
+              <div class="info-card">
+                <div class="number">R</div>
+                <h3>Правый Shift</h3>
+                <p>Находится в нижней правой части буквенного блока: обычно справа от клавиши с символом «/» и под клавишей Enter. Его удобно нажимать мизинцем правой руки.</p>
+              </div>
+            </div>
+            <div class="callout"><span class="symbol">i</span><p><b>Важно:</b> расположение и форма клавиш могут немного отличаться на ноутбуках и компактных клавиатурах. Ориентируйтесь на надпись <b>Shift</b> или символ <b>⇧</b>. Не путайте Shift со стрелкой вверх на клавиатуре навигации — нужна именно клавиша с надписью Shift.</p></div>
+          </section>
+
+          <section id="shift-press">
+            <div class="section-kicker">Часть 2 · Нажатие</div>
+            <h2>2. Как правильно нажать Shift</h2>
+            <p>Нажать клавишу — значит опустить её до момента срабатывания и затем отпустить. Это короткое действие. Не нужно бить по клавише или нажимать на неё со всей силы.</p>
+            <div class="step-list">
+              <div class="step"><p><b>Положите руку на клавиатуру.</b><br>Найдите левый или правый Shift. Для первого знакомства можно просто посмотреть на него и слегка коснуться пальцем.</p></div>
+              <div class="step"><p><b>Поставьте подушечку пальца на клавишу.</b><br>Подойдёт мизинец соответствующей руки. Можно использовать и другой палец, если так удобнее. Палец должен располагаться над клавишей, а не цепляться за её край.</p></div>
+              <div class="step"><p><b>Нажмите вертикально вниз.</b><br>Плавно опустите клавишу до ощутимого срабатывания. Обычно слышен тихий щелчок или ощущается небольшой ход клавиши.</p></div>
+              <div class="step"><p><b>Отпустите палец.</b><br>Уберите усилие и позвольте клавише подняться обратно. Одного такого короткого нажатия достаточно.</p></div>
+            </div>
+            <h3>Какую силу приложить?</h3>
+            <p>Используйте <b>минимальное усилие, при котором клавиша уверенно срабатывает</b>. Для обычной исправной клавиатуры обычно хватает лёгкого нажатия подушечкой пальца. Универсального значения силы в граммах или ньютонах нет: усилие зависит от конструкции клавиатуры, типа переключателей и глубины хода.</p>
+            <div class="callout warn"><span class="symbol">!</span><p><b>Не давите изо всех сил.</b> Не нужно вдавливать клавишу в корпус, ударять по ней ногтем или пытаться продавить её дальше после срабатывания. Сильное давление не делает команду «более правильной» и только создаёт лишнюю нагрузку на палец и клавиатуру.</p></div>
+          </section>
+
+          <section id="shift-hold">
+            <div class="section-kicker">Часть 3 · Удержание</div>
+            <h2>3. Как удерживать Shift</h2>
+            <p><b>Удерживать клавишу</b> — значит нажать её и не отпускать палец. В отличие от обычного нажатия, действие не заканчивается сразу: клавиша остаётся физически прижатой всё время, пока вы держите палец на ней.</p>
+            <div class="card-grid">
+              <div class="info-card">
+                <h3>Нажать</h3>
+                <p>Коснуться клавиши, опустить её до срабатывания и сразу убрать палец. Получается одно короткое нажатие.</p>
+              </div>
+              <div class="info-card">
+                <h3>Удерживать</h3>
+                <p>Опустить клавишу до срабатывания и оставить палец на месте. Не поднимайте его, пока не закончите нужное действие.</p>
+              </div>
+            </div>
+            <div class="step-list">
+              <div class="step"><p><b>Поставьте палец на Shift.</b><br>Убедитесь, что нашли именно эту клавишу.</p></div>
+              <div class="step"><p><b>Нажмите её до срабатывания.</b><br>Используйте такое же лёгкое усилие, как при обычном нажатии.</p></div>
+              <div class="step"><p><b>Оставьте палец на клавише.</b><br>Не убирайте его и не ослабляйте давление настолько, чтобы клавиша поднялась. Не нужно усиливать нажатие: достаточно сохранять клавишу в нижнем положении.</p></div>
+              <div class="step"><p><b>Когда действие закончится, отпустите Shift.</b><br>Поднимите палец. Клавиша вернётся в исходное положение.</p></div>
+            </div>
+            <p>Для удержания не требуется продолжать давить сильнее. Представьте, что вы нажали кнопку лифта и держите её нажатой: вы просто сохраняете контакт и положение пальца, а не пытаетесь продавить кнопку всё глубже.</p>
+            <div class="callout"><span class="symbol">✓</span><p><b>Признак правильного удержания:</b> Shift остаётся нажатой непрерывно. Если вы случайно подняли палец, клавиша отпустилась — для следующего действия её нужно нажать заново.</p></div>
+          </section>
+
+          <section id="mouse-location">
+            <div class="section-kicker">Часть 4 · Компьютерная мышь</div>
+            <h2>4. Где находится правая кнопка мыши</h2>
+            <p>У большинства обычных компьютерных мышей верхняя часть разделена на две основные кнопки: левую и правую. Правая кнопка — это правая половина верхней поверхности мыши, если смотреть на неё так, как вы обычно держите её рукой.</p>
+            <div class="diagram">
+              <div class="diagram-head"><strong>Верхняя часть обычной мыши</strong><span>Вид сверху</span></div>
+              <div class="mouse-diagram" role="img" aria-label="Мышь сверху: правая кнопка выделена зелёным цветом, слева показана левая кнопка.">
+                <div class="mouse-large" aria-hidden="true"><div class="left-zone"></div><div class="right-zone"></div><div class="split"></div><div class="wheel"></div></div>
+                <div class="mouse-notes">
+                  <p><b style="color:var(--accent)">Правая кнопка</b><br><span class="muted">Правая половина верхней панели. Обычно нажимается указательным пальцем правой руки.</span></p>
+                  <div class="legend"><span><i class="swatch"></i> Правая кнопка мыши</span></div>
+                  <p style="margin-top:16px"><b style="color:var(--blue)">Левая кнопка</b><br><span class="muted">Левая половина верхней панели. Не перепутайте её с правой.</span></p>
+                </div>
+              </div>
+              <p class="keyboard-caption">Колёсико находится между кнопками. Для правого щелчка нажимать на колёсико не нужно.</p>
+            </div>
+            <p>Если вы правша, обычно мышь лежит справа от клавиатуры, а ладонь свободно опирается на её корпус. Если мышь настроена для левши или кнопки в операционной системе поменяны местами, физическое расположение и назначение кнопок могут различаться. В этой инструкции под «правой кнопкой» имеется в виду именно кнопка, назначенная системой как <b>правая кнопка мыши</b>.</p>
+          </section>
+
+          <section id="mouse-press">
+            <div class="section-kicker">Часть 5 · Щелчок и удержание</div>
+            <h2>5. Как нажать и удерживать правую кнопку мыши</h2>
+            <h3>Обычное нажатие — правый щелчок</h3>
+            <div class="step-list">
+              <div class="step"><p><b>Положите ладонь на мышь.</b><br>Не сжимайте корпус. Пусть рука спокойно лежит сверху, а пальцы свободно достают до кнопок.</p></div>
+              <div class="step"><p><b>Положите указательный или средний палец на правую кнопку.</b><br>В стандартном хвате правую кнопку чаще нажимают средним пальцем, а указательный оставляют на левой. Но допустим и другой удобный хват.</p></div>
+              <div class="step"><p><b>Слегка нажмите вниз.</b><br>Кнопка должна пройти небольшой ход и сработать. Вы можете почувствовать и услышать тихий механический щелчок.</p></div>
+              <div class="step"><p><b>Отпустите кнопку.</b><br>Палец поднимется, кнопка вернётся в исходное положение. Это и есть обычный правый щелчок.</p></div>
+            </div>
+            <h3>Какую силу приложить к кнопке мыши?</h3>
+            <p>Принцип тот же, что и с клавиатурой: нажимайте <b>ровно настолько, чтобы кнопка сработала</b>. Не нужно резко ударять по ней или давить всей массой руки. У разных мышей различаются ход кнопок и усилие срабатывания, поэтому ориентируйтесь на лёгкий механический щелчок.</p>
+            <h3>Как удерживать правую кнопку</h3>
+            <p>Удержание правой кнопки — это не серия быстрых щелчков. Вы нажимаете кнопку один раз и оставляете палец на ней в нажатом положении.</p>
+            <div class="step-list">
+              <div class="step"><p><b>Поставьте палец на правую кнопку.</b><br>Убедитесь, что палец находится именно на кнопке, а не на колёсике.</p></div>
+              <div class="step"><p><b>Нажмите до щелчка.</b><br>Приложите небольшое усилие и опустите кнопку.</p></div>
+              <div class="step"><p><b>Не поднимайте палец.</b><br>Продолжайте держать кнопку прижатой. Не нужно нажимать сильнее после щелчка.</p></div>
+              <div class="step"><p><b>Отпустите, когда закончите.</b><br>Поднимите палец — кнопка вернётся в исходное положение.</p></div>
+            </div>
+            <div class="callout warn"><span class="symbol">!</span><p><b>Не двигайте мышь без необходимости.</b> Если задача требует только правого щелчка, оставьте мышь на месте. Если нужно удерживать кнопку во время перемещения, двигайте мышь плавно, не отпуская нажатую кнопку.</p></div>
+          </section>
+
+          <section id="combination">
+            <div class="section-kicker">Часть 6 · Совместное действие</div>
+            <h2>6. Как одновременно удерживать Shift + правую кнопку мыши</h2>
+            <p>Цель этой инструкции — не просто щёлкнуть правой кнопкой мыши при зажатом Shift. Нужно добиться состояния, при котором <b>Shift и правая кнопка мыши одновременно нажаты и остаются зажатыми</b> в течение всего требуемого действия.</p>
+            <p>Для этого сначала зажмите Shift. Не отпуская его, нажмите и тоже зажмите правую кнопку мыши. После второго нажатия <b>держите обе кнопки одновременно</b> столько, сколько требуется.</p>
+            <div class="sequence" aria-label="Последовательность: нажать Shift, не отпуская его нажать правую кнопку мыши, удерживать обе кнопки одновременно">
+              <div class="sequence-item"><span class="n">ШАГ 1</span><strong>Зажать Shift</strong><small>Оставить палец на клавише</small></div>
+              <span class="arrow">→</span>
+              <div class="sequence-item"><span class="n">ШАГ 2</span><strong>Зажать ПКМ</strong><small>Shift всё ещё нажат</small></div>
+              <span class="arrow">→</span>
+              <div class="sequence-item"><span class="n">ШАГ 3</span><strong>Держать обе</strong><small>Не отпускать ни Shift, ни ПКМ</small></div>
+            </div>
+            <div class="hold-state" role="img" aria-label="Итоговое состояние: клавиша Shift и правая кнопка мыши одновременно удерживаются">
+              <span class="hold-state-label">Именно такое положение нужно получить</span>
+              <div class="hold-state-controls">
+                <div class="hold-control">
+                  <div class="hold-key">Shift</div>
+                  <div class="hold-control-copy"><strong>Клавиша Shift</strong><span>УДЕРЖИВАЕТСЯ</span></div>
+                </div>
+                <span class="hold-plus">+</span>
+                <div class="hold-control">
+                  <div class="hold-mouse" aria-hidden="true"></div>
+                  <div class="hold-control-copy"><strong>Правая кнопка</strong><span>УДЕРЖИВАЕТСЯ</span></div>
+                </div>
+              </div>
+              <p><strong>Обе кнопки нажаты одновременно.</strong> Не отпускайте ни одну из них, пока не закончите действие, для которого нужна комбинация.</p>
+            </div>
+            <h3>Подробная последовательность действий</h3>
+            <div class="step-list">
+              <div class="step"><p><b>Подготовьте руки.</b><br>Одной рукой расположитесь у клавиатуры, другой возьмитесь за мышь. Например, левой рукой можно удерживать левый Shift, а правой — нажимать правую кнопку мыши.</p></div>
+              <div class="step"><p><b>Нажмите левый или правый Shift.</b><br>Опустите клавишу до срабатывания и оставьте палец на ней. Не отпускайте Shift.</p></div>
+              <div class="step"><p><b>Не отпуская Shift, нажмите и зажмите правую кнопку мыши.</b><br>Опустите правую кнопку до щелчка и оставьте палец на ней. Теперь нажаты обе кнопки: Shift на клавиатуре и ПКМ на мыши.</p></div>
+              <div class="step"><p><b>Удерживайте обе кнопки одновременно.</b><br>Это основной этап. Продолжайте прижимать Shift одним пальцем, а правую кнопку мыши — другим. Не отпускайте Shift и не отпускайте ПКМ. Не нужно давить сильнее: просто сохраняйте обе кнопки в нажатом положении столько, сколько требуется.</p></div>
+              <div class="step"><p><b>Завершите действие и отпустите кнопки.</b><br>Сначала отпустите правую кнопку мыши, затем Shift. До этого момента обе кнопки должны оставаться зажатыми.</p></div>
+            </div>
+            <div class="callout"><span class="symbol">✓</span><p><b>Ключевой момент:</b> после нажатия ПКМ вы должны продолжать удерживать и Shift, и правую кнопку мыши. Одного короткого щелчка ПКМ недостаточно, если от вас требуется именно зажать комбинацию.</p></div>
+            <h3>Как это выглядит по времени</h3>
+            <div class="diagram">
+              <div class="diagram-head"><strong>Как долго должны удерживаться обе кнопки</strong><span>Схематично</span></div>
+              <svg viewBox="0 0 720 190" width="100%" role="img" aria-label="Временная диаграмма: Shift удерживается на протяжении всего действия, правая кнопка нажимается позже и отпускается раньше Shift." xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="gShift" x1="0" x2="1"><stop offset="0" stop-color="#75c99d"/><stop offset="1" stop-color="#a6ecc6"/></linearGradient><linearGradient id="gMouse" x1="0" x2="1"><stop offset="0" stop-color="#79a8f2"/><stop offset="1" stop-color="#a6c8ff"/></linearGradient></defs>
+                <g font-family="system-ui, sans-serif" font-size="13" fill="#a2afbf">
+                  <text x="8" y="48">Shift</text><text x="8" y="112">Правая</text><text x="8" y="130">кнопка</text>
+                  <text x="190" y="175">Начало</text><text x="615" y="175">Время →</text>
+                </g>
+                <g stroke="#405064" stroke-width="1"><line x1="145" y1="58" x2="690" y2="58"/><line x1="145" y1="121" x2="690" y2="121"/><line x1="145" y1="145" x2="145" y2="153"/><line x1="690" y1="145" x2="690" y2="153"/></g>
+                <rect x="205" y="29" width="420" height="36" rx="8" fill="url(#gShift)"/><rect x="355" y="92" width="180" height="36" rx="8" fill="url(#gMouse)"/>
+                <g font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle"><text x="415" y="52" fill="#0a2015">Shift удерживается</text><text x="445" y="115" fill="#10203a">ПКМ удерживается</text></g>
+                <g stroke-dasharray="4 5" stroke="#8191a5" stroke-width="1.2"><line x1="205" y1="21" x2="205" y2="143"/><line x1="355" y1="80" x2="355" y2="143"/><line x1="535" y1="80" x2="535" y2="143"/><line x1="625" y1="21" x2="625" y2="143"/></g>
+                <g fill="#dce6f2" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle"><text x="205" y="15">Нажать</text><text x="355" y="77">Нажать ПКМ</text><text x="535" y="77">Отпустить ПКМ</text><text x="625" y="15">Отпустить</text></g>
+              </svg>
+              <p class="keyboard-caption">Отрезок, на котором полосы Shift и ПКМ перекрываются, — это период, когда <b>обе кнопки одновременно зажаты</b>. Удерживайте их вместе до завершения действия.</p>
+            </div>
+            <div class="checklist">
+              <h3>Проверка перед выполнением</h3>
+              <ul>
+                <li>Я нашёл клавишу Shift на клавиатуре.</li>
+                <li>Я знаю, какая половина мыши является правой кнопкой.</li>
+                <li>Я нажимаю обе кнопки без чрезмерного усилия.</li>
+                <li>Я нажимаю ПКМ, продолжая удерживать Shift.</li>
+                <li>После нажатия ПКМ я удерживаю обе кнопки одновременно.</li>
+                <li>Я отпускаю обе кнопки только после завершения действия.</li>
+              </ul>
+            </div>
+            <p>В некоторых программах или играх сочетание может обрабатываться по собственным правилам. Например, приложение может реагировать на начало нажатия, на отпускание кнопки или на то, что обе кнопки удерживаются одновременно. Если программа дала отдельную инструкцию о порядке действий, следуйте ей.</p>
+          </section>
+
+          <section id="mistakes">
+            <div class="section-kicker">Часть 7 · Полезные уточнения</div>
+            <h2>7. Частые ошибки и ответы на вопросы</h2>
+            <div class="faq">
+              <details>
+                <summary>Нужно ли нажимать Shift очень сильно?</summary>
+                <p>Нет. Достаточно лёгкого нажатия до срабатывания клавиши. После этого при удержании просто сохраняйте её в нажатом положении — дополнительная сила не нужна.</p>
+              </details>
+              <details>
+                <summary>Можно ли использовать правый Shift вместо левого?</summary>
+                <p>Да. В обычной раскладке левый и правый Shift выполняют одинаковую функцию. Используйте тот, до которого удобнее дотянуться.</p>
+              </details>
+              <details>
+                <summary>Можно ли нажать Shift и правую кнопку одной рукой?</summary>
+                <p>Физически это возможно в зависимости от расположения устройств, но обычно удобнее использовать две руки: одной удерживать Shift, другой нажимать правую кнопку мыши.</p>
+              </details>
+              <details>
+                <summary>Если я нажал ПКМ и сразу отпустил, это считается удержанием?</summary>
+                <p>Нет. Это обычный короткий щелчок. Для нужной комбинации удерживайте Shift и правую кнопку мыши в нажатом положении одновременно.</p>
+              </details>
+              <details>
+                <summary>Нужно ли удерживать обе кнопки одновременно?</summary>
+                <p>Да. Сначала зажмите Shift, затем, не отпуская его, зажмите правую кнопку мыши. После этого обе кнопки должны оставаться в нажатом положении одновременно до завершения нужного действия.</p>
+              </details>
+              <details>
+                <summary>Что делать, если клавиша или кнопка не срабатывает?</summary>
+                <p>Проверьте, что нажимаете нужную клавишу или кнопку, и попробуйте ещё раз с обычным усилием. Убедитесь, что устройство подключено и исправно. Не пытайтесь компенсировать неисправность сильным давлением.</p>
+              </details>
+              <details>
+                <summary>На ноутбуке Shift находится в другом месте — это нормально?</summary>
+                <p>Форма и размер клавиатур ноутбуков различаются. Обычно Shift всё равно находится в нижнем буквенном ряду слева и справа. Ищите надпись Shift или символ ⇧.</p>
+              </details>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Понятные инструкции от Мистера Кибби.</span>
+      <a class="backtop" href="../index.html">← Все статьи</a>
+    </div>
+  </footer>
+</body>
+</html>
