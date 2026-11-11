@@ -84,7 +84,8 @@
     .plus { color: var(--subtle); font-size: 22px; font-weight: 400; }
     .mouse-mini { width: 57px; height: 72px; position: relative; border: 2px solid #8090a2; border-radius: 27px 27px 19px 19px; background: linear-gradient(110deg, #263443, #17222e); overflow: hidden; }
     .mouse-mini::before { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 27px; transform: translateX(-50%); background: #8090a2; }
-    .mouse-mini::after { content: ""; position: absolute; top: 5px; left: 5px; width: 20px; height: 26px; border-radius: 14px 4px 4px 4px; background: var(--blue); opacity: .85; }
+    /* Подсвечиваем именно правую кнопку: схема показана сверху, как при обычном хвате мыши. */
+    .mouse-mini::after { content: ""; position: absolute; top: 5px; right: 5px; width: 20px; height: 26px; border-radius: 4px 14px 4px 4px; background: var(--accent); opacity: .95; box-shadow: 0 0 13px rgba(157,231,194,.28); }
     .combo-caption { color: var(--muted); font-size: 12px; text-align: center; }
     .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; align-items: start; padding-bottom: 90px; }
     .toc { position: sticky; top: 92px; padding: 18px 0; }
@@ -138,6 +139,31 @@
     .step b { color: var(--text); }
     .sequence { display: flex; align-items: stretch; gap: 8px; margin: 20px 0; }
     .sequence-item { flex: 1; padding: 15px 12px; border: 1px solid var(--line); border-radius: 14px; text-align: center; background: var(--surface); }
+    .hold-state { margin: 22px 0; padding: 22px; border: 1px solid rgba(157,231,194,.34); border-radius: 20px; background: linear-gradient(135deg, rgba(157,231,194,.105), rgba(15,24,34,.96) 62%); box-shadow: 0 14px 36px rgba(0,0,0,.16); }
+    .hold-state-label { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 11px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .hold-state-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .hold-state-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 18px 0 13px; }
+    .hold-control { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .hold-control-copy { display: grid; gap: 3px; }
+    .hold-control-copy strong { color: var(--text); font-size: 14px; }
+    .hold-control-copy span { color: var(--accent); font-size: 12px; font-weight: 750; }
+    .hold-plus { color: var(--subtle); font-size: 25px; }
+    .hold-key { display: grid; place-items: center; min-width: 88px; height: 62px; padding: 0 13px; border: 1px solid #c4f8dc; border-bottom: 5px solid #4d9b75; border-radius: 12px; color: #07150e; background: linear-gradient(180deg, #b7f3d3, #82d9ad); box-shadow: 0 7px 0 #0a111a; font-size: 15px; font-weight: 900; }
+    .hold-mouse { position: relative; width: 48px; height: 62px; flex: 0 0 auto; overflow: hidden; border: 2px solid #8090a2; border-radius: 24px 24px 16px 16px; background: linear-gradient(110deg, #263443, #17222e); }
+    .hold-mouse::before { content: ""; position: absolute; top: 0; left: 50%; height: 24px; width: 2px; transform: translateX(-50%); background: #8090a2; }
+    .hold-mouse::after { content: ""; position: absolute; top: 4px; right: 4px; width: 17px; height: 23px; border-radius: 4px 13px 4px 4px; background: var(--accent); box-shadow: 0 0 13px rgba(157,231,194,.3); }
+    .hold-state > p { max-width: 720px; margin: 0 auto; text-align: center; color: #d5e4dc; font-size: 14px; }
+    .hold-state > p strong { color: var(--accent); }
+    @media (max-width: 600px) {
+      .hold-state { padding: 18px 13px; }
+      .hold-state-controls { gap: 10px; }
+      .hold-control { gap: 8px; }
+      .hold-control-copy strong { font-size: 12px; }
+      .hold-control-copy span { font-size: 11px; }
+      .hold-key { min-width: 68px; height: 54px; font-size: 13px; }
+      .hold-mouse { width: 42px; height: 54px; }
+      .hold-mouse::after { width: 15px; height: 20px; }
+    }
     .sequence-item .n { display: block; color: var(--accent); font-size: 11px; font-weight: 900; margin-bottom: 6px; }
     .sequence-item strong { display: block; font-size: 13px; line-height: 1.35; }
     .sequence-item small { display: block; color: var(--muted); font-size: 11px; margin-top: 6px; }
@@ -221,7 +247,7 @@
           </div>
           <div class="combo-preview" aria-label="Схема комбинации Shift и правой кнопки мыши">
             <div class="combo-keys"><div class="keycap accent">Shift</div><span class="plus">+</span><div class="mouse-mini" aria-hidden="true"></div></div>
-            <div class="combo-caption">Сначала удерживаем Shift,<br>затем нажимаем правую кнопку мыши</div>
+            <div class="combo-caption">Удерживаем Shift и ПКМ одновременно.<br>Подсвечена правая кнопка мыши.</div>
           </div>
         </div>
       </section>
@@ -366,28 +392,43 @@
 
           <section id="combination">
             <div class="section-kicker">Часть 6 · Совместное действие</div>
-            <h2>6. Как выполнить Shift + правая кнопка мыши</h2>
-            <p>Комбинация <b>Shift + правая кнопка мыши</b> означает, что клавиша Shift должна оставаться нажатой в тот момент, когда вы нажимаете правую кнопку мыши. Это не значит, что нужно нажать их одновременно с точностью до миллисекунды.</p>
-            <p>Самый понятный способ — сначала нажать и удерживать Shift на клавиатуре, затем, не отпуская Shift, нажать правую кнопку мыши.</p>
-            <div class="sequence" aria-label="Последовательность выполнения комбинации">
-              <div class="sequence-item"><span class="n">ШАГ 1</span><strong>Нажать Shift</strong><small>Палец остаётся на клавише</small></div>
+            <h2>6. Как одновременно удерживать Shift + правую кнопку мыши</h2>
+            <p>Цель этой инструкции — не просто щёлкнуть правой кнопкой мыши при зажатом Shift. Нужно добиться состояния, при котором <b>Shift и правая кнопка мыши одновременно нажаты и остаются зажатыми</b> в течение всего требуемого действия.</p>
+            <p>Для этого сначала зажмите Shift. Не отпуская его, нажмите и тоже зажмите правую кнопку мыши. После второго нажатия <b>держите обе кнопки одновременно</b> столько, сколько требуется.</p>
+            <div class="sequence" aria-label="Последовательность: нажать Shift, не отпуская его нажать правую кнопку мыши, удерживать обе кнопки одновременно">
+              <div class="sequence-item"><span class="n">ШАГ 1</span><strong>Зажать Shift</strong><small>Оставить палец на клавише</small></div>
               <span class="arrow">→</span>
-              <div class="sequence-item"><span class="n">ШАГ 2</span><strong>Удерживать Shift</strong><small>Не отпускать клавишу</small></div>
+              <div class="sequence-item"><span class="n">ШАГ 2</span><strong>Зажать ПКМ</strong><small>Shift всё ещё нажат</small></div>
               <span class="arrow">→</span>
-              <div class="sequence-item"><span class="n">ШАГ 3</span><strong>Нажать ПКМ</strong><small>Shift всё ещё удерживается</small></div>
+              <div class="sequence-item"><span class="n">ШАГ 3</span><strong>Держать обе</strong><small>Не отпускать ни Shift, ни ПКМ</small></div>
+            </div>
+            <div class="hold-state" role="img" aria-label="Итоговое состояние: клавиша Shift и правая кнопка мыши одновременно удерживаются">
+              <span class="hold-state-label">Именно такое положение нужно получить</span>
+              <div class="hold-state-controls">
+                <div class="hold-control">
+                  <div class="hold-key">Shift</div>
+                  <div class="hold-control-copy"><strong>Клавиша Shift</strong><span>УДЕРЖИВАЕТСЯ</span></div>
+                </div>
+                <span class="hold-plus">+</span>
+                <div class="hold-control">
+                  <div class="hold-mouse" aria-hidden="true"></div>
+                  <div class="hold-control-copy"><strong>Правая кнопка</strong><span>УДЕРЖИВАЕТСЯ</span></div>
+                </div>
+              </div>
+              <p><strong>Обе кнопки нажаты одновременно.</strong> Не отпускайте ни одну из них, пока не закончите действие, для которого нужна комбинация.</p>
             </div>
             <h3>Подробная последовательность действий</h3>
             <div class="step-list">
               <div class="step"><p><b>Подготовьте руки.</b><br>Одной рукой расположитесь у клавиатуры, другой возьмитесь за мышь. Например, левой рукой можно удерживать левый Shift, а правой — нажимать правую кнопку мыши.</p></div>
               <div class="step"><p><b>Нажмите левый или правый Shift.</b><br>Опустите клавишу до срабатывания и оставьте палец на ней. Не отпускайте Shift.</p></div>
-              <div class="step"><p><b>Продолжая удерживать Shift, нажмите правую кнопку мыши.</b><br>Не убирая палец с Shift, нажмите правую кнопку мыши до щелчка. Теперь обе кнопки находятся в нажатом состоянии.</p></div>
-              <div class="step"><p><b>Отпустите правую кнопку мыши.</b><br>Сначала поднимите палец с мыши. Shift пока продолжайте удерживать.</p></div>
-              <div class="step"><p><b>Отпустите Shift.</b><br>После отпускания правой кнопки поднимите палец с клавиши Shift. Комбинация завершена.</p></div>
+              <div class="step"><p><b>Не отпуская Shift, нажмите и зажмите правую кнопку мыши.</b><br>Опустите правую кнопку до щелчка и оставьте палец на ней. Теперь нажаты обе кнопки: Shift на клавиатуре и ПКМ на мыши.</p></div>
+              <div class="step"><p><b>Удерживайте обе кнопки одновременно.</b><br>Это основной этап. Продолжайте прижимать Shift одним пальцем, а правую кнопку мыши — другим. Не отпускайте Shift и не отпускайте ПКМ. Не нужно давить сильнее: просто сохраняйте обе кнопки в нажатом положении столько, сколько требуется.</p></div>
+              <div class="step"><p><b>Завершите действие и отпустите кнопки.</b><br>Сначала отпустите правую кнопку мыши, затем Shift. До этого момента обе кнопки должны оставаться зажатыми.</p></div>
             </div>
-            <div class="callout"><span class="symbol">✓</span><p><b>Ключевой момент:</b> в момент нажатия правой кнопки Shift уже должна быть нажата и всё ещё должна удерживаться. Если отпустить Shift до нажатия правой кнопки, сочетание не будет выполнено.</p></div>
+            <div class="callout"><span class="symbol">✓</span><p><b>Ключевой момент:</b> после нажатия ПКМ вы должны продолжать удерживать и Shift, и правую кнопку мыши. Одного короткого щелчка ПКМ недостаточно, если от вас требуется именно зажать комбинацию.</p></div>
             <h3>Как это выглядит по времени</h3>
             <div class="diagram">
-              <div class="diagram-head"><strong>Состояние клавиш во время комбинации</strong><span>Схематично</span></div>
+              <div class="diagram-head"><strong>Как долго должны удерживаться обе кнопки</strong><span>Схематично</span></div>
               <svg viewBox="0 0 720 190" width="100%" role="img" aria-label="Временная диаграмма: Shift удерживается на протяжении всего действия, правая кнопка нажимается позже и отпускается раньше Shift." xmlns="http://www.w3.org/2000/svg">
                 <defs><linearGradient id="gShift" x1="0" x2="1"><stop offset="0" stop-color="#75c99d"/><stop offset="1" stop-color="#a6ecc6"/></linearGradient><linearGradient id="gMouse" x1="0" x2="1"><stop offset="0" stop-color="#79a8f2"/><stop offset="1" stop-color="#a6c8ff"/></linearGradient></defs>
                 <g font-family="system-ui, sans-serif" font-size="13" fill="#a2afbf">
@@ -396,11 +437,11 @@
                 </g>
                 <g stroke="#405064" stroke-width="1"><line x1="145" y1="58" x2="690" y2="58"/><line x1="145" y1="121" x2="690" y2="121"/><line x1="145" y1="145" x2="145" y2="153"/><line x1="690" y1="145" x2="690" y2="153"/></g>
                 <rect x="205" y="29" width="420" height="36" rx="8" fill="url(#gShift)"/><rect x="355" y="92" width="180" height="36" rx="8" fill="url(#gMouse)"/>
-                <g font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle"><text x="415" y="52" fill="#0a2015">Удерживается</text><text x="445" y="115" fill="#10203a">Нажата</text></g>
+                <g font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle"><text x="415" y="52" fill="#0a2015">Shift удерживается</text><text x="445" y="115" fill="#10203a">ПКМ удерживается</text></g>
                 <g stroke-dasharray="4 5" stroke="#8191a5" stroke-width="1.2"><line x1="205" y1="21" x2="205" y2="143"/><line x1="355" y1="80" x2="355" y2="143"/><line x1="535" y1="80" x2="535" y2="143"/><line x1="625" y1="21" x2="625" y2="143"/></g>
                 <g fill="#dce6f2" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle"><text x="205" y="15">Нажать</text><text x="355" y="77">Нажать ПКМ</text><text x="535" y="77">Отпустить ПКМ</text><text x="625" y="15">Отпустить</text></g>
               </svg>
-              <p class="keyboard-caption">Сначала нажимается Shift. Правая кнопка нажимается и отпускается, пока Shift всё ещё удерживается. Затем отпускается Shift.</p>
+              <p class="keyboard-caption">Отрезок, на котором полосы Shift и ПКМ перекрываются, — это период, когда <b>обе кнопки одновременно зажаты</b>. Удерживайте их вместе до завершения действия.</p>
             </div>
             <div class="checklist">
               <h3>Проверка перед выполнением</h3>
@@ -408,8 +449,9 @@
                 <li>Я нашёл клавишу Shift на клавиатуре.</li>
                 <li>Я знаю, какая половина мыши является правой кнопкой.</li>
                 <li>Я нажимаю обе кнопки без чрезмерного усилия.</li>
-                <li>Я не отпускаю Shift до нажатия правой кнопки.</li>
-                <li>Я отпускаю обе кнопки после завершения действия.</li>
+                <li>Я нажимаю ПКМ, продолжая удерживать Shift.</li>
+                <li>После нажатия ПКМ я удерживаю обе кнопки одновременно.</li>
+                <li>Я отпускаю обе кнопки только после завершения действия.</li>
               </ul>
             </div>
             <p>В некоторых программах или играх сочетание может обрабатываться по собственным правилам. Например, приложение может реагировать на начало нажатия, на отпускание кнопки или на то, что обе кнопки удерживаются одновременно. Если программа дала отдельную инструкцию о порядке действий, следуйте ей.</p>
@@ -432,12 +474,12 @@
                 <p>Физически это возможно в зависимости от расположения устройств, но обычно удобнее использовать две руки: одной удерживать Shift, другой нажимать правую кнопку мыши.</p>
               </details>
               <details>
-                <summary>Если я нажал Shift и сразу отпустил, это считается удержанием?</summary>
-                <p>Нет. Это обычное короткое нажатие. Для удержания палец должен оставаться на клавише, пока выполняется нужное действие.</p>
+                <summary>Если я нажал ПКМ и сразу отпустил, это считается удержанием?</summary>
+                <p>Нет. Это обычный короткий щелчок. Для нужной комбинации удерживайте Shift и правую кнопку мыши в нажатом положении одновременно.</p>
               </details>
               <details>
-                <summary>Нужно ли нажать обе кнопки одновременно?</summary>
-                <p>Нет. В типичном случае нужно сначала нажать и удерживать Shift, а затем нажать правую кнопку мыши. Важно, чтобы Shift оставался нажатым в момент щелчка правой кнопкой.</p>
+                <summary>Нужно ли удерживать обе кнопки одновременно?</summary>
+                <p>Да. Сначала зажмите Shift, затем, не отпуская его, зажмите правую кнопку мыши. После этого обе кнопки должны оставаться в нажатом положении одновременно до завершения нужного действия.</p>
               </details>
               <details>
                 <summary>Что делать, если клавиша или кнопка не срабатывает?</summary>
