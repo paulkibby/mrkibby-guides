@@ -20,7 +20,7 @@
       '<header class="topbar"><div class="wrap topbar-inner">' +
         '<a class="brand" href="' + root + '" aria-label="Мистер Кибби — на главную">' +
           '<span class="brand-mark" aria-hidden="true">MK</span>' +
-          '<span class="brand-copy"><strong>МИСТЕР КИББИ</strong><small>БИБЛИОТЕКА ПОНЯТНЫХ ВЕЩЕЙ</small></span>' +
+          '<span class="brand-copy"><strong>МИСТЕР КИББИ</strong><small>ИНСТРУКЦИИ И РАЗБОРЫ</small></span>' +
         '</a>' +
         '<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">' +
           '<span>Меню</span><span class="menu-toggle-icon" aria-hidden="true"><i></i><i></i></span>' +
@@ -28,9 +28,9 @@
         '<nav class="site-nav" id="site-navigation" aria-label="Основная навигация">' +
           '<a href="' + root + 'library/">Библиотека</a>' +
           '<a href="' + root + '#articles">Последние материалы</a>' +
-          '<a href="' + root + '#about">Принцип работы</a>' +
+          '<a href="' + root + '#about">О материалах</a>' +
         '</nav>' +
-        '<a class="top-link" href="' + root + 'library/">Выбрать тему <span aria-hidden="true">↗</span></a>' +
+        '<a class="top-link" href="' + root + 'library/">Все материалы <span aria-hidden="true">↗</span></a>' +
       '</div></header>';
 
     const menuButton = header.querySelector(".menu-toggle");
@@ -54,12 +54,12 @@
         '<div class="footer-brand-block">' +
           '<a class="brand footer-brand" href="' + root + '">' +
             '<span class="brand-mark" aria-hidden="true">MK</span>' +
-            '<span class="brand-copy"><strong>МИСТЕР КИББИ</strong><small>БИБЛИОТЕКА ПОНЯТНЫХ ВЕЩЕЙ</small></span>' +
+            '<span class="brand-copy"><strong>МИСТЕР КИББИ</strong><small>ИНСТРУКЦИИ И РАЗБОРЫ</small></span>' +
           '</a>' +
-          '<p>Сложное — по шагам.<br>Понятное — навсегда.</p>' +
+          '<p>Инструкции и разборы.<br>Без пропущенных шагов.</p>' +
         '</div>' +
-        '<div class="footer-links"><span>НАВИГАЦИЯ</span><a href="' + root + 'library/">Библиотека</a><a href="' + root + '#about">Как мы объясняем</a><a href="' + root + '#top">Наверх ↑</a></div>' +
-        '<div class="footer-signoff"><span>НЕ ПРЕТЕНДУЕМ НА ВСЕ ЗНАНИЯ.</span><strong>ЗАТО ЛЮБИМ РАЗБИРАТЬСЯ.</strong></div>' +
+        '<div class="footer-links"><span>РАЗДЕЛЫ</span><a href="' + root + 'library/">Библиотека</a><a href="' + root + '#about">О материалах</a><a href="' + root + '#top">Наверх ↑</a></div>' +
+        '<div class="footer-signoff"><span>МАТЕРИАЛЫ ДЛЯ ТЕХ, КТО</span><strong>ХОЧЕТ РАЗОБРАТЬСЯ САМ.</strong></div>' +
       '</div><div class="wrap footer-bottom"><span>© <span data-current-year></span> Мистер Кибби</span><span>Сделано с любопытством.</span></div></footer>';
     const year = footer.querySelector("[data-current-year]");
     if (year) year.textContent = String(new Date().getFullYear());
