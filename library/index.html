@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="description" content="Все инструкции и разборы Мистера Кибби в одной библиотеке. Ищите материалы по теме, названию или ключевым словам.">
+  <title>Библиотека материалов — Мистер Кибби</title>
+  <link rel="canonical" href="https://paulkibby.github.io/shift-guide/library/">
+  <meta property="og:title" content="Библиотека материалов — Мистер Кибби">
+  <meta property="og:description" content="Инструкции и понятные разборы в одной библиотеке.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/type-scale.css">
+  <script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="library">
+  <div data-site-header></div>
+
+  <main id="top" class="library-page">
+    <section class="library-hero wrap">
+      <div class="section-kicker">Все материалы <span>/ 01</span></div>
+      <h1>Библиотека,<br>в которой <em>всё по полкам.</em></h1>
+      <p>Ищите по названию, теме или ключевым словам. Каждый материал начинается с основ и ведёт к понятному результату.</p>
+      <form class="library-search" action="./" method="get" role="search">
+        <label class="library-search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+          <input id="article-search" type="search" name="q" placeholder="Например: Discord, Shift, сансара…" autocomplete="off" aria-label="Поиск по материалам">
+        </label>
+        <button class="button-primary" type="submit">Найти <span aria-hidden="true">↗</span></button>
+      </form>
+    </section>
+
+    <section class="library-browser wrap" aria-labelledby="results-title">
+      <div class="browser-topline">
+        <div>
+          <div class="section-kicker">Каталог <span>/ 02</span></div>
+          <h2 id="results-title">Выберите материал</h2>
+        </div>
+        <div class="library-count" id="result-count" aria-live="polite">Загружаем каталог…</div>
+      </div>
+      <div class="library-toolbar">
+        <div class="filter-group" role="group" aria-label="Фильтр материалов">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Все материалы</button>
+          <button class="filter-button" type="button" data-filter="guide" aria-pressed="false">Инструкции</button>
+          <button class="filter-button" type="button" data-filter="ideas" aria-pressed="false">Разборы</button>
+        </div>
+        <span class="sort-note">Сначала новые материалы</span>
+      </div>
+      <div class="article-grid library-article-grid" id="article-grid" aria-live="polite">
+        <div class="catalog-loading">Загружаем материалы…</div>
+      </div>
+      <div class="empty-state" id="empty-state" role="status">По этому запросу ничего не нашлось. Попробуйте другое слово или выберите другую категорию.</div>
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+</body>
+</html>

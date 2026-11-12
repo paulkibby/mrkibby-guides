@@ -4,71 +4,130 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#090b0f">
-  <meta name="description" content="Инструкции, понятные разборы и интересные темы от Мистера Кибби. Сложное — по полочкам, спокойно и без лишнего шума.">
-  <title>Мистер Кибби — понятные инструкции и разборы</title>
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="description" content="Гайды, инструкции и вдумчивые разборы от Мистера Кибби. Сложные темы — понятным языком, с примерами и без пропущенных шагов.">
+  <title>Мистер Кибби — разобраться можно во всём</title>
   <link rel="canonical" href="https://paulkibby.github.io/shift-guide/">
-  <meta property="og:title" content="Мистер Кибби — понятные инструкции и разборы">
-  <meta property="og:description" content="Подробные инструкции и разборы тем, в которых хочется наконец разобраться.">
+  <meta property="og:title" content="Мистер Кибби — разобраться можно во всём">
+  <meta property="og:description" content="Понятные инструкции и разборы. Сложное — по шагам, без лишнего шума.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/tokens.css">
   <link rel="stylesheet" href="./assets/css/site.css">
+  <link rel="stylesheet" href="./assets/css/type-scale.css">
   <script defer src="./assets/js/site.js"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Blog","name":"Понятные инструкции от Мистера Кибби","description":"Инструкции, разборы и интересные темы простым языком.","inLanguage":"ru"}
+  {"@context":"https://schema.org","@type":"Blog","name":"Мистер Кибби","description":"Понятные инструкции, разборы и объяснения простым языком.","inLanguage":"ru"}
   </script>
 </head>
 <body data-page="home">
   <div data-site-header></div>
+
   <main id="top">
-    <section class="home-hero wrap">
+    <section class="home-hero wrap" aria-labelledby="home-title">
       <div class="home-hero-copy">
-        <div class="home-kicker">Личный блог · библиотека знаний</div>
-        <h1 class="home-title">Разбираем<br><span class="title-accent">сложное.</span><br><span class="title-italic">Объясняем ясно.</span></h1>
-        <p class="home-description">Инструкции, наблюдения и разборы тем, в которых хочется наконец разобраться. Без спешки, без лишнего шума и без ощущения, что вы пропустили первые десять лекций.</p>
-        <div class="hero-actions">
-          <a class="button-primary" href="#articles">Выбрать материал <span aria-hidden="true">↘</span></a>
-          <span class="hero-footnote">Понятно. Последовательно. По делу.</span>
+        <div class="eyebrow"><span class="eyebrow-pulse" aria-hidden="true"></span>Личная библиотека знаний</div>
+        <h1 class="home-title" id="home-title">Понимать <span>сложное</span> —<br>не привилегия.</h1>
+        <p class="home-description">Инструкции, понятные объяснения и разборы идей. Без снобизма, прыжков через шаги и ощущения, что вы пропустили первые десять лекций.</p>
+        <form class="hero-search" action="./library/" method="get" role="search">
+          <label class="hero-search-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+            <input type="search" name="q" placeholder="Что хотите понять? Например, Discord…" aria-label="Поиск по библиотеке">
+          </label>
+          <button class="button-primary" type="submit">Найти материал <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="hero-signals" aria-label="Принципы материалов">
+          <span><i aria-hidden="true"></i>Пошагово</span>
+          <span><i aria-hidden="true"></i>Понятным языком</span>
+          <span><i aria-hidden="true"></i>Без лишнего шума</span>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="visual-grid"></div>
-        <span class="visual-cross cross-one">+</span><span class="visual-cross cross-two">+</span>
-        <div class="visual-orbit"><div class="visual-core">К<small>01</small></div></div>
-        <div class="visual-note note-one"><strong>Сначала смысл</strong><span>Разобраться в основе</span></div>
-        <div class="visual-note note-two"><strong>Затем детали</strong><span>Ничего не пропускаем</span></div>
-        <div class="visual-note note-three"><strong>И ясный итог</strong><span>Всё встаёт на место</span></div>
-        <div class="visual-caption"><span>KNOWLEDGE, WITHOUT THE NOISE</span><span>MK / 001</span></div>
-      </div>
-    </section>
-    <section class="library-section wrap" id="articles" aria-labelledby="library-title">
-      <div class="library-heading">
-        <div><span class="section-overline">Библиотека / 01</span><h2 id="library-title">Материалы, к которым<br>можно возвращаться.</h2></div>
-        <div class="library-count" id="result-count" aria-live="polite">Загружаем каталог…</div>
-      </div>
-      <div class="library-toolbar">
-        <div class="filter-group" role="group" aria-label="Фильтр материалов">
-          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Все материалы</button>
-          <button class="filter-button" type="button" data-filter="guide" aria-pressed="false">Инструкции</button>
-          <button class="filter-button" type="button" data-filter="ideas" aria-pressed="false">Разборы</button>
+
+      <aside class="hero-feature" aria-label="Рекомендуемая инструкция">
+        <div class="feature-orbit feature-orbit-one" aria-hidden="true"></div>
+        <div class="feature-orbit feature-orbit-two" aria-hidden="true"></div>
+        <div class="feature-topline">
+          <span class="feature-label">В центре внимания</span>
+          <span class="feature-counter">01 <i>/</i> 03</span>
         </div>
-        <label class="search-field">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
-          <input id="article-search" type="search" placeholder="Найти материал…" autocomplete="off" aria-label="Поиск по материалам">
-        </label>
-      </div>
-      <div class="article-grid" id="article-grid" aria-live="polite"></div>
-      <div class="empty-state" id="empty-state">По этому запросу ничего не нашлось. Попробуйте изменить формулировку или выбрать другую категорию.</div>
+        <div class="feature-art" aria-hidden="true">
+          <span class="feature-art-ring"></span>
+          <span class="feature-art-mark">MK<span>®</span></span>
+          <span class="feature-art-index">FIELD NOTES<br>№ 001</span>
+        </div>
+        <div class="feature-copy">
+          <div class="feature-category">Инструкция <span>·</span> Discord</div>
+          <h2>Как изменить статус с «Невидимый» на «В сети»</h2>
+          <p>Где найти меню статуса и что нажать на компьютере или телефоне.</p>
+          <a class="feature-link" href="./articles/discord-invisible-to-online.html">Открыть инструкцию <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="feature-bottomline"><span>ПОНЯТНО С ПЕРВОГО ШАГА</span><span>MR. KIBBY / 2026</span></div>
+      </aside>
     </section>
-    <section class="principle-band wrap" id="about">
-      <div><span class="principle-label">Редакционный принцип</span><h2>Не нужно быть экспертом, чтобы понять тему.</h2></div>
-      <p>Сначала объясняем главное. Затем разбираем незнакомые слова, показываем каждый важный шаг и приводим примеры. Здесь можно читать в своём темпе и возвращаться к нужному месту, когда потребуется.</p>
+
+    <section class="numbers-strip wrap" aria-label="О библиотеке">
+      <div class="number-item"><strong>03</strong><span>материала в библиотеке</span></div>
+      <div class="number-item"><strong>02</strong><span>формата: гайды и разборы</span></div>
+      <div class="number-item"><strong>∞</strong><span>тем, которые можно разобрать</span></div>
+      <div class="numbers-note">Небольшая библиотека.<br>Большое любопытство.</div>
+    </section>
+
+    <section class="home-library wrap" id="articles" aria-labelledby="library-title">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Библиотека <span> / 01</span></div>
+          <h2 id="library-title">Найдите то, что<br>давно хотелось понять.</h2>
+        </div>
+        <a class="text-link" href="./library/">Вся библиотека <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="article-grid home-article-grid" id="home-article-grid" aria-live="polite">
+        <div class="catalog-loading">Загружаем материалы…</div>
+      </div>
+    </section>
+
+    <section class="method-section wrap" id="about" aria-labelledby="method-title">
+      <div class="method-heading">
+        <div class="section-kicker">Как мы объясняем <span>/ 02</span></div>
+        <h2 id="method-title">Сложное — не значит<br><em>недоступное.</em></h2>
+        <p>Хорошее объяснение не проверяет, сколько вы уже знаете. Оно помогает разобраться с нуля — и не теряет точность по дороге.</p>
+      </div>
+      <div class="method-steps">
+        <article class="method-card">
+          <span class="method-index">01</span>
+          <div class="method-icon" aria-hidden="true">↳</div>
+          <h3>Сначала контекст</h3>
+          <p>Объясняем, что перед вами, зачем это нужно и какие слова важно знать.</p>
+        </article>
+        <article class="method-card">
+          <span class="method-index">02</span>
+          <div class="method-icon" aria-hidden="true">⌁</div>
+          <h3>Потом каждый шаг</h3>
+          <p>Показываем последовательность действий и не пропускаем мелочи, которые на деле важны.</p>
+        </article>
+        <article class="method-card">
+          <span class="method-index">03</span>
+          <div class="method-icon" aria-hidden="true">✓</div>
+          <h3>В конце — ясность</h3>
+          <p>Проверяем результат, разбираем частые ошибки и повторяем главное.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing-cta wrap">
+      <div>
+        <div class="section-kicker">Следующий шаг <span>/ 03</span></div>
+        <h2>Любопытство — хороший повод начать.</h2>
+        <p>Выберите тему, задайте вопрос и разберитесь в ней в своём темпе.</p>
+      </div>
+      <a class="button-primary button-primary-light" href="./library/">Перейти в библиотеку <span aria-hidden="true">↗</span></a>
+      <span class="cta-decoration" aria-hidden="true">MK.</span>
     </section>
   </main>
+
   <div data-site-footer></div>
 </body>
 </html>

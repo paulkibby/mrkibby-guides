@@ -4,44 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0c10">
   <meta name="description" content="{{DESCRIPTION}}">
-  <title>{{TITLE}} — от Мистера Кибби</title>
+  <title>{{TITLE}} — Мистер Кибби</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/type-scale.css">
   <script defer src="../assets/js/site.js"></script>
 </head>
 <body data-page="article" data-article="{{SLUG}}">
   <div data-site-header></div>
 
-  <main id="top" class="wrap">
-    <header class="hero">
-      <div class="eyebrow">{{CATEGORY}}</div>
-      <h1 id="page-title">{{TITLE}}</h1>
-      <p class="lead">{{INTRODUCTION}}</p>
-      <div class="hero-meta">
-        <span class="pill">{{TOPIC}}</span>
-        <span class="pill">{{READING_TIME}}</span>
-      </div>
-      <div class="answer-box">
-        <strong>Короткий ответ</strong>
-        <p>{{SHORT_ANSWER}}</p>
-      </div>
-    </header>
+  <main id="top">
+    <div class="wrap">
+      <header class="hero">
+        <div class="eyebrow">{{CATEGORY}}</div>
+        <h1 id="page-title">{{TITLE}}</h1>
+        <p class="lead">{{INTRODUCTION}}</p>
+        <div class="hero-meta">
+          <span class="pill">{{TOPIC}}</span>
+          <span class="pill">{{READING_TIME}}</span>
+        </div>
+        <div class="answer-box">
+          <strong>Короткий ответ</strong>
+          <p>{{SHORT_ANSWER}}</p>
+        </div>
+      </header>
 
-    <div class="layout">
-      <aside class="toc" aria-label="Содержание статьи">
-        <div class="toc-title">Содержание</div>
-        <nav>
-          <!-- Добавьте ссылки на разделы статьи. -->
-        </nav>
-      </aside>
-
-      <article aria-labelledby="page-title">
-        <!-- Добавьте сюда содержимое статьи: section, h2, h3, p, ol, ul и figure. -->
-      </article>
+      <div class="layout">
+        <aside class="toc" aria-label="Содержание статьи">
+          <div class="toc-title">Содержание</div>
+          <nav aria-label="Разделы статьи">
+            <!-- Добавьте ссылки на разделы статьи. -->
+          </nav>
+        </aside>
+        <article aria-labelledby="page-title">
+          <!-- Добавьте сюда содержимое: section, h2, h3, p, ol, ul и figure. -->
+        </article>
+      </div>
     </div>
   </main>
 

@@ -1,0 +1,24 @@
+/* Hard lower bound for compact labels and text in legacy article illustrations. */
+body[data-page="article"] .top-label,
+body[data-page="article"] .quick-step b,
+body[data-page="article"] .quick-step span,
+body[data-page="article"] .combo-caption,
+body[data-page="article"] .diagram-head span,
+body[data-page="article"] .key,
+body[data-page="article"] .key.shift,
+body[data-page="article"] .keyboard-caption,
+body[data-page="article"] .legend,
+body[data-page="article"] .hold-state-label,
+body[data-page="article"] .hold-control-copy span,
+body[data-page="article"] .hold-control-copy strong,
+body[data-page="article"] .hold-key,
+body[data-page="article"] .sequence-item .n,
+body[data-page="article"] .sequence-item strong,
+body[data-page="article"] .sequence-item small,
+body[data-page="article"] .number,
+body[data-page="article"] .link-item span,
+body[data-page="article"] .sources li {
+  font-size: 14px !important;
+}
+body[data-page="article"] .step::before { font-size: 14px !important; }
+body[data-page="article"] .site-footer { font-size: 16px; }
