@@ -4,335 +4,71 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#090d14">
-  <meta name="description" content="Понятные инструкции, разборы и интересные темы от Мистера Кибби. Объясняю сложное простым языком — без лишнего шума.">
-  <title>Понятные инструкции от Мистера Кибби</title>
+  <meta name="theme-color" content="#090b0f">
+  <meta name="description" content="Инструкции, понятные разборы и интересные темы от Мистера Кибби. Сложное — по полочкам, спокойно и без лишнего шума.">
+  <title>Мистер Кибби — понятные инструкции и разборы</title>
   <link rel="canonical" href="https://paulkibby.github.io/shift-guide/">
-  <meta property="og:title" content="Понятные инструкции от Мистера Кибби">
-  <meta property="og:description" content="Инструкции, разборы и интересные темы — понятно, спокойно и по делу.">
+  <meta property="og:title" content="Мистер Кибби — понятные инструкции и разборы">
+  <meta property="og:description" content="Подробные инструкции и разборы тем, в которых хочется наконец разобраться.">
   <meta property="og:type" content="website">
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #090d14;
-      --surface: #101722;
-      --surface-raised: #141e2b;
-      --surface-hover: #192636;
-      --text: #edf3fb;
-      --muted: #a2afbf;
-      --subtle: #718096;
-      --line: rgba(174,194,218,.14);
-      --accent: #9de7c2;
-      --accent-soft: rgba(157,231,194,.09);
-      --blue: #91baff;
-      --amber: #ffd28a;
-      --max: 1160px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse at 16% 0%, rgba(80,143,119,.16), transparent 34rem),
-        radial-gradient(ellipse at 94% 18%, rgba(74,116,180,.12), transparent 33rem),
-        var(--bg);
-      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: .005em;
-    }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible, input:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-    button, input { font: inherit; }
-    .wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
-    .topbar {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(9,13,20,.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; font-weight: 780; letter-spacing: -.035em; }
-    .brand-mark {
-      width: 39px; height: 39px; display: grid; place-items: center; flex: 0 0 auto;
-      border-radius: 12px; color: #07120d; background: var(--accent);
-      font-size: 13px; font-weight: 950; letter-spacing: -.08em;
-      box-shadow: 0 0 28px rgba(157,231,194,.17);
-    }
-    .brand-name { display: block; line-height: 1.15; font-size: 15px; }
-    .brand-by { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; }
-    .top-link { color: var(--muted); font-size: 13px; }
-    .top-link:hover { color: var(--accent); }
-    .hero { padding: 88px 0 61px; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 12px; border: 1px solid rgba(157,231,194,.22);
-      border-radius: 999px; background: var(--accent-soft);
-      color: var(--accent); font-size: 11px; font-weight: 850;
-      letter-spacing: .13em; text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-    h1 { max-width: 850px; margin: 23px 0 17px; font-size: clamp(43px,7vw,78px); line-height: 1.01; letter-spacing: -.07em; }
-    h1 span { color: var(--accent); }
-    .hero-copy { max-width: 710px; color: #bac6d5; font-size: clamp(17px,2vw,20px); line-height: 1.7; }
-    .hero-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 23px; margin-top: 29px; color: var(--muted); font-size: 12px; }
-    .hero-bottom span { display: inline-flex; align-items: center; gap: 8px; }
-    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-    .intro-panel {
-      display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 28px;
-      margin-top: 38px;
-      padding: 24px 27px; border: 1px solid var(--line); border-radius: 21px;
-      background: linear-gradient(120deg,rgba(21,31,44,.96),rgba(13,20,30,.82));
-      box-shadow: 0 20px 60px rgba(0,0,0,.2);
-    }
-    .intro-panel strong { display: block; margin-bottom: 4px; font-size: 16px; letter-spacing: -.02em; }
-    .intro-panel p { max-width: 650px; margin: 0; color: var(--muted); font-size: 13px; }
-    .intro-mark { color: var(--accent); font-size: 34px; opacity: .85; }
-    .library { padding: 43px 0 94px; }
-    .library-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
-    .section-kicker { color: var(--accent); font-size: 10px; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
-    h2 { margin: 7px 0 0; font-size: clamp(27px,4vw,38px); letter-spacing: -.05em; line-height: 1.15; }
-    .count { color: var(--subtle); font-size: 12px; white-space: nowrap; }
-    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 25px 0 21px; }
-    .filters { display: flex; flex-wrap: wrap; gap: 7px; }
-    .filter {
-      border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px;
-      color: var(--muted); background: rgba(255,255,255,.025);
-      cursor: pointer; font-size: 12px; font-weight: 700; transition: .18s ease;
-    }
-    .filter:hover { border-color: rgba(157,231,194,.45); color: var(--text); }
-    .filter[aria-pressed="true"] { border-color: rgba(157,231,194,.42); color: var(--accent); background: var(--accent-soft); }
-    .search { position: relative; width: min(100%,290px); }
-    .search input {
-      width: 100%; min-height: 40px; padding: 9px 13px 9px 38px;
-      border: 1px solid var(--line); border-radius: 12px;
-      background: rgba(16,23,34,.88); color: var(--text); font-size: 12px;
-    }
-    .search input::placeholder { color: var(--subtle); }
-    .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--subtle); font-size: 15px; pointer-events: none; }
-    .article-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; }
-    .article-card {
-      position: relative; display: flex; flex-direction: column; min-height: 290px;
-      overflow: hidden; padding: 23px; border: 1px solid var(--line); border-radius: 19px;
-      background: linear-gradient(145deg,rgba(18,27,39,.98),rgba(13,20,30,.96));
-      transition: transform .2s ease,border-color .2s ease,background .2s ease;
-    }
-    .article-card:hover { transform: translateY(-3px); border-color: rgba(157,231,194,.34); background: linear-gradient(145deg,#172333,#101925); }
-    .article-card[hidden] { display: none !important; }
-    .article-card::after {
-      content: ""; position: absolute; right: -65px; top: -85px; width: 190px; height: 190px;
-      border: 1px solid rgba(157,231,194,.09); border-radius: 50%;
-      box-shadow: 0 0 0 24px rgba(157,231,194,.018),0 0 0 49px rgba(157,231,194,.012);
-      pointer-events: none;
-    }
-    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .category {
-      display: inline-flex; align-items: center; gap: 7px;
-      color: var(--accent); font-size: 10px; font-weight: 850;
-      letter-spacing: .1em; text-transform: uppercase;
-    }
-    .category::before { content: ""; width: 6px; height: 6px; border-radius: 2px; background: currentColor; }
-    .read-time { color: var(--subtle); font-size: 11px; }
-    .card-icon {
-      display: grid; place-items: center; width: 44px; height: 44px; margin: 24px 0 17px;
-      border: 1px solid var(--line); border-radius: 13px;
-      background: rgba(255,255,255,.035); color: var(--accent); font-size: 21px;
-    }
-    .article-card h3 { max-width: 440px; margin: 0 0 10px; font-size: clamp(20px,2.5vw,25px); line-height: 1.22; letter-spacing: -.04em; }
-    .article-card p { max-width: 510px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-    .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 22px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; color: var(--subtle); font-size: 10px; }
-    .card-arrow { color: var(--accent); font-size: 18px; transition: transform .18s ease; }
-    .article-card:hover .card-arrow { transform: translateX(4px); }
-    .empty {
-      display: none; padding: 35px 20px; border: 1px dashed var(--line);
-      border-radius: 16px; color: var(--muted); text-align: center; font-size: 13px;
-    }
-    .empty.visible { display: block; }
-    footer { border-top: 1px solid var(--line); padding: 25px 0 35px; color: var(--subtle); font-size: 11px; }
-    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; }
-    .footer-inner strong { color: var(--muted); font-weight: 700; }
-    @media (max-width: 760px) {
-      .hero { padding: 65px 0 45px; }
-      .intro-panel { grid-template-columns: 1fr; gap: 10px; margin-top: 28px; }
-      .intro-mark { display: none; }
-      .toolbar { align-items: stretch; flex-direction: column-reverse; }
-      .search { width: 100%; }
-      .article-grid { grid-template-columns: 1fr; }
-      .article-card { min-height: 260px; }
-    }
-    @media (max-width: 480px) {
-      .wrap { width: min(100% - 28px,var(--max)); }
-      .topbar-inner { min-height: 64px; }
-      .brand-name { font-size: 13px; }
-      .top-link { font-size: 11px; }
-      .hero { padding-top: 54px; }
-      h1 { font-size: clamp(41px,12vw,58px); }
-      .intro-panel { padding: 19px; }
-      .library { padding-top: 35px; }
-      .library-head { align-items: start; flex-direction: column; gap: 7px; }
-      .article-card { padding: 19px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *,*::before,*::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
-    }
-  </style>
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <script defer src="./assets/js/site.js"></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Понятные инструкции от Мистера Кибби",
-    "description": "Инструкции, разборы и интересные темы простым языком.",
-    "inLanguage": "ru"
-  }
+  {"@context":"https://schema.org","@type":"Blog","name":"Понятные инструкции от Мистера Кибби","description":"Инструкции, разборы и интересные темы простым языком.","inLanguage":"ru"}
   </script>
 </head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="./" aria-label="Понятные инструкции от Мистера Кибби">
-        <span class="brand-mark">МК</span>
-        <span><span class="brand-name">Понятные инструкции</span><span class="brand-by">от Мистера Кибби</span></span>
-      </a>
-      <a class="top-link" href="#articles">Все материалы ↓</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero wrap">
-      <div class="eyebrow">Личный блог · понятные разборы</div>
-      <h1>Разбираемся в сложном.<br><span>Без лишней сложности.</span></h1>
-      <p class="hero-copy">Инструкции, наблюдения и разборы тем, в которых хочется наконец-то разобраться. Нормальным языком, с примерами и без ощущения, что вы пропустили первые десять лекций.</p>
-      <div class="hero-bottom">
-        <span><i class="dot"></i> Объяснения по делу</span>
-        <span><i class="dot"></i> От простого к сложному</span>
-        <span><i class="dot"></i> Автор — Мистер Кибби</span>
-      </div>
-      <div class="intro-panel">
-        <div>
-          <strong>Не нужно быть экспертом, чтобы понять тему.</strong>
-          <p>Здесь собраны материалы, которые помогают разобраться в конкретном вопросе: от действий за компьютером до идей, которые требуют чуть больше контекста.</p>
+<body data-page="home">
+  <div data-site-header></div>
+  <main id="top">
+    <section class="home-hero wrap">
+      <div class="home-hero-copy">
+        <div class="home-kicker">Личный блог · библиотека знаний</div>
+        <h1 class="home-title">Разбираем<br><span class="title-accent">сложное.</span><br><span class="title-italic">Объясняем ясно.</span></h1>
+        <p class="home-description">Инструкции, наблюдения и разборы тем, в которых хочется наконец разобраться. Без спешки, без лишнего шума и без ощущения, что вы пропустили первые десять лекций.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#articles">Выбрать материал <span aria-hidden="true">↘</span></a>
+          <span class="hero-footnote">Понятно. Последовательно. По делу.</span>
         </div>
-        <div class="intro-mark" aria-hidden="true">✳</div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-grid"></div>
+        <span class="visual-cross cross-one">+</span><span class="visual-cross cross-two">+</span>
+        <div class="visual-orbit"><div class="visual-core">К<small>01</small></div></div>
+        <div class="visual-note note-one"><strong>Сначала смысл</strong><span>Разобраться в основе</span></div>
+        <div class="visual-note note-two"><strong>Затем детали</strong><span>Ничего не пропускаем</span></div>
+        <div class="visual-note note-three"><strong>И ясный итог</strong><span>Всё встаёт на место</span></div>
+        <div class="visual-caption"><span>KNOWLEDGE, WITHOUT THE NOISE</span><span>MK / 001</span></div>
       </div>
     </section>
-
-    <section class="library wrap" id="articles" aria-labelledby="articles-title">
-      <div class="library-head">
-        <div>
-          <div class="section-kicker">Библиотека материалов</div>
-          <h2 id="articles-title">Все статьи</h2>
-        </div>
-        <div class="count" id="result-count" aria-live="polite">3 материала</div>
+    <section class="library-section wrap" id="articles" aria-labelledby="library-title">
+      <div class="library-heading">
+        <div><span class="section-overline">Библиотека / 01</span><h2 id="library-title">Материалы, к которым<br>можно возвращаться.</h2></div>
+        <div class="library-count" id="result-count" aria-live="polite">Загружаем каталог…</div>
       </div>
-
-      <div class="toolbar">
-        <div class="filters" role="group" aria-label="Фильтр по типу материала">
-          <button class="filter" type="button" data-filter="all" aria-pressed="true">Все</button>
-          <button class="filter" type="button" data-filter="guide" aria-pressed="false">Инструкции</button>
-          <button class="filter" type="button" data-filter="ideas" aria-pressed="false">Разборы</button>
+      <div class="library-toolbar">
+        <div class="filter-group" role="group" aria-label="Фильтр материалов">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Все материалы</button>
+          <button class="filter-button" type="button" data-filter="guide" aria-pressed="false">Инструкции</button>
+          <button class="filter-button" type="button" data-filter="ideas" aria-pressed="false">Разборы</button>
         </div>
-        <label class="search">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-          <input id="article-search" type="search" placeholder="Найти статью..." autocomplete="off" aria-label="Поиск по статьям">
+        <label class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+          <input id="article-search" type="search" placeholder="Найти материал…" autocomplete="off" aria-label="Поиск по материалам">
         </label>
       </div>
-
-      <div class="article-grid" id="article-grid">
-        <a class="article-card" href="articles/discord-invisible-to-online.html" data-category="guide" data-search="discord статус невидимый в сети online invisible сменить изменить статус компьютер телефон android iphone">
-          <div class="card-top">
-            <span class="category">Инструкция · Discord</span>
-            <span class="read-time">4–5 минут</span>
-          </div>
-          <div class="card-icon" aria-hidden="true">◉</div>
-          <h3>Как изменить статус Discord с «Невидимый» на «В сети»</h3>
-          <p>Показываем, где найти меню статуса и как включить «В сети» на компьютере, в браузере и на телефоне.</p>
-          <div class="card-bottom">
-            <span class="tags"><span class="tag">Discord</span><span class="tag">Для начинающих</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
-
-        <a class="article-card" href="articles/wheel-of-samsara.html" data-category="ideas" data-search="колесо сансары бхавачакра буддизм перерождение карма шесть миров двенадцать звеньев">
-          <div class="card-top">
-            <span class="category">Буддийская символика</span>
-            <span class="read-time">12–15 минут</span>
-          </div>
-          <div class="card-icon" aria-hidden="true">◎</div>
-          <h3>Колесо сансары: что это такое и как его читать</h3>
-          <p>Подробно разбираем буддийский символ: три яда в центре, карму, шесть миров, двенадцать звеньев и путь к освобождению.</p>
-          <div class="card-bottom">
-            <span class="tags"><span class="tag">Буддизм</span><span class="tag">Символика</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
-
-        <a class="article-card" href="articles/shift-and-right-click.html" data-category="guide" data-search="shift правая кнопка мыши пк компьютер клавиатура удерживать инструкция">
-          <div class="card-top">
-            <span class="category">Инструкция</span>
-            <span class="read-time">5–7 минут</span>
-          </div>
-          <div class="card-icon" aria-hidden="true">⌨</div>
-          <h3>Как нажимать и удерживать Shift и правую кнопку мыши</h3>
-          <p>Показываем, где находятся нужные клавиша и кнопка, как правильно нажать их и как удерживать одновременно — спокойно, по шагам.</p>
-          <div class="card-bottom">
-            <span class="tags"><span class="tag">Компьютер</span><span class="tag">Для начинающих</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="empty" id="empty-state">По этому запросу ничего не нашлось. Попробуйте изменить формулировку или выбрать другую категорию.</div>
+      <div class="article-grid" id="article-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state">По этому запросу ничего не нашлось. Попробуйте изменить формулировку или выбрать другую категорию.</div>
+    </section>
+    <section class="principle-band wrap" id="about">
+      <div><span class="principle-label">Редакционный принцип</span><h2>Не нужно быть экспертом, чтобы понять тему.</h2></div>
+      <p>Сначала объясняем главное. Затем разбираем незнакомые слова, показываем каждый важный шаг и приводим примеры. Здесь можно читать в своём темпе и возвращаться к нужному месту, когда потребуется.</p>
     </section>
   </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <span><strong>Понятные инструкции от Мистера Кибби</strong> · Авторский блог</span>
-      <a href="#articles">К списку статей ↑</a>
-    </div>
-  </footer>
-
-  <script>
-    (() => {
-      const cards = [...document.querySelectorAll(".article-card")];
-      const buttons = [...document.querySelectorAll("[data-filter]")];
-      const search = document.getElementById("article-search");
-      const count = document.getElementById("result-count");
-      const empty = document.getElementById("empty-state");
-      let activeFilter = "all";
-
-      const update = () => {
-        const query = search.value.trim().toLocaleLowerCase("ru");
-        let visible = 0;
-
-        cards.forEach((card) => {
-          const categoryMatches = activeFilter === "all" || card.dataset.category === activeFilter;
-          const textMatches = (card.dataset.search + " " + card.innerText).toLocaleLowerCase("ru").includes(query);
-          const show = categoryMatches && textMatches;
-          card.hidden = !show;
-          if (show) visible++;
-        });
-
-        count.textContent = visible + (visible === 1 ? " материал" : visible >= 2 && visible <= 4 ? " материала" : " материалов");
-        empty.classList.toggle("visible", visible === 0);
-      };
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          activeFilter = button.dataset.filter;
-          buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-          update();
-        });
-      });
-
-      search.addEventListener("input", update);
-      update();
-    })();
-  </script>
+  <div data-site-footer></div>
 </body>
 </html>
