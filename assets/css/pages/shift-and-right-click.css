@@ -205,3 +205,9 @@
       h2 { font-size: 30px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Semantic utility classes replacing old inline styles. */
+body[data-page="article"] article b.text-accent { color: var(--color-accent) !important; }
+body[data-page="article"] article b.text-blue { color: var(--color-blue) !important; }
+body[data-page="article"] article p.space-top { margin-top: 16px !important; }
+body[data-page="article"] .hold-state.hold-state--compact { margin-bottom: 0 !important; }
